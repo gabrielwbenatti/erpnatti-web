@@ -16,7 +16,9 @@ onMounted(async () => { await fetchProducts() })
     <main>
         <div class="search">
             <input type="text" class="search__input" placeholder="Pesquise aqui">
-            <button class="search__new">Novo</button>
+            <RouterLink to="/products/create">
+                <button class="search__new">Novo</button>
+            </RouterLink>
         </div>
 
         <br>
@@ -32,13 +34,14 @@ onMounted(async () => { await fetchProducts() })
             </div>
         </div>
 
+        <router-view></router-view>
+
     </main>
 </template>
 
 
 <style scoped>
 .search {
-    width: 80vw;
     display: flex;
     justify-content: space-between;
     margin-inline: auto;
@@ -61,7 +64,6 @@ onMounted(async () => { await fetchProducts() })
 
 .listing {
     .listing__card {
-        width: 80vw;
         border-radius: 10px;
         padding: 10px;
         margin-inline: auto;
