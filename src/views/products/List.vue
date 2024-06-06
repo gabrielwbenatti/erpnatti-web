@@ -1,39 +1,15 @@
 <script setup>
-import { ref } from 'vue';
-import Modal from '@/components/Modal.vue'
+import { onMounted, ref } from 'vue';
 
-const products = ref([
-    {
-        "rowid": 13,
-        "reference": "82688",
-        "name": "Egeo Des Col Dolce C\/Car 90ml",
-        "nameAlias": "",
-        "status": false,
-        "toSell": false,
-        "toBuy": false
-    },
-    {
-        "rowid": 14,
-        "reference": "25458",
-        "name": "Floratta Blue Desodorante Colônia, 75ml",
-        "nameAlias": "",
-        "status": false,
-        "toSell": false,
-        "toBuy": false
-    },
-    {
-        "rowid": 15,
-        "reference": "57530",
-        "name": "Estj Egeo Choc Amor\/24",
-        "nameAlias": "",
-        "status": false,
-        "toSell": false,
-        "toBuy": false
-    }
-])
-const isModalShow = ref(false)
+const products = ref([])
 
-function showModal() { isModalShow = true; }
+async function fetchProducts() {
+    await fetch('http://localhost:9000/products')
+        .then(res => res.json())
+        .then(json => products.value = json)
+}
+
+onMounted(async () => { await fetchProducts() })
 </script>
 
 <template>
@@ -56,7 +32,6 @@ function showModal() { isModalShow = true; }
             </div>
         </div>
 
-        <Modal v-if="isModalShow" />
     </main>
 </template>
 
