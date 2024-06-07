@@ -24,7 +24,7 @@ onMounted(async () => { await fetchProducts() })
         <br>
 
         <div class="listing">
-            <div v-for="product in products" @click="showModal">
+            <div v-for="product in products" :key="product.rowid">
                 <div class="listing__card">
                     <div> {{ product.reference }}</div>
                     <div class="listing__card-title">
