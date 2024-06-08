@@ -1,44 +1,71 @@
 <script setup>
-import { onMounted, ref } from 'vue';
+import { onMounted, ref } from "vue";
 
-const products = ref([])
+const products = ref([]);
+const search = ref("");
 
-async function fetchProducts() {
-    await fetch('http://localhost:9000/products')
-        .then(res => res.json())
-        .then(json => products.value = json)
+async function fetchProducts(searchTerm) {
+    try {
+        const url = new URL("http://localhost:9000/products");
+
+        if (searchTerm.value !== "") {
+            url.searchParams.append("searchTerm", searchTerm);
+        }
+
+        const response = await fetch(url);
+
+        if (!response) {
+            throw new Error(`HTTP Error: status ${response.status}`);
+        }
+
+        const json = await response.json();
+        products.value = json;
+    } catch (error) {
+        console.error("Falha ao buscar produtos", error);
+    }
 }
 
-onMounted(async () => { await fetchProducts() })
+async function searchProducts(e) {
+    const key = e.keyCode;
+    if (key == 13) fetchProducts(search.value);
+}
+
+onMounted(async () => {
+    await fetchProducts(search);
+});
 </script>
 
 <template>
     <main>
         <div class="search">
-            <input type="text" class="search__input" placeholder="Pesquise aqui">
+            <input
+                type="text"
+                class="search__input"
+                placeholder="Pesquise aqui"
+                v-model="search"
+                v-on:keydown="searchProducts"
+            />
             <RouterLink to="/products/create">
                 <button class="search__new">Novo</button>
             </RouterLink>
         </div>
 
-        <br>
+        <br />
 
         <div class="listing">
             <div v-for="product in products" :key="product.rowid">
                 <div class="listing__card">
-                    <div> {{ product.reference }}</div>
-                    <div class="listing__card-title">
-                        {{ product.nameAlias || product.name }}
+                    <div class="listing__card-content">
+                        <div>{{ product.reference }}</div>
+                        <div class="listing__card-title">
+                            {{ product.nameAlias || product.name }}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <router-view></router-view>
-
     </main>
 </template>
-
 
 <style scoped>
 .search {
@@ -67,12 +94,20 @@ onMounted(async () => { await fetchProducts() })
         border-radius: 10px;
         padding: 10px;
         margin-inline: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
 
         &:hover {
             cursor: pointer;
             color: #efefef;
             font-weight: bold;
             background-color: rgb(28, 28, 28);
+        }
+
+        .listing__card-content {
+            display: flex;
+            flex-direction: column;
         }
     }
 }
