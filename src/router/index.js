@@ -13,8 +13,14 @@ const routes = [
     },
     {
         path: "/products/create",
-        name: "productsCreate",
+        name: "products.create",
         component: () => import("@/views/products/Create.vue"),
+    },
+    {
+        path: "/products/:id",
+        name: "products.edit",
+        component: () => import("@/views/products/Edit.vue"),
+        props: true,
     },
 ];
 
