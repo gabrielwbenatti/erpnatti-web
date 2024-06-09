@@ -1,8 +1,16 @@
 <script setup>
 import { onMounted, ref } from "vue";
+import { useRouter } from "vue-router";
 
 const products = ref([]);
 const search = ref("");
+const router = useRouter();
+
+function navToDetail(id) {
+    router.push({
+        path: `/products/${id}`,
+    });
+}
 
 async function fetchProducts(searchTerm) {
     try {
@@ -54,7 +62,7 @@ onMounted(async () => {
 
         <div class="listing">
             <div v-for="product in products" :key="product.rowid">
-                <div class="listing__card">
+                <div class="listing__card" @click="navToDetail(product.rowid)">
                     <div class="listing__card-content">
                         <div>{{ product.reference }}</div>
                         <div class="listing__card-title">

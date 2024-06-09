@@ -11,7 +11,6 @@ const toBuy = ref(true);
 
 async function referenceAlreadyExists(reference) {
     const url = new URL("http://localhost:9000/products");
-    console.log(`ref: ${reference.trim()}`);
     url.searchParams.append("reference", reference.trim());
     const response = await fetch(url);
     if (response) {
@@ -22,11 +21,12 @@ async function referenceAlreadyExists(reference) {
 }
 
 async function save() {
-    if (referenceAlreadyExists(reference.value)) return;
+    if ((await referenceAlreadyExists(reference.value)) === true) return;
 
     const url = new URL("http://localhost:9000/products");
     await fetch(url, {
         method: "POST",
+        mode: "cors",
         body: JSON.stringify({
             reference: reference.value,
             name: name.value,
