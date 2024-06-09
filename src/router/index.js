@@ -22,6 +22,11 @@ const routes = [
         component: () => import("@/views/products/Edit.vue"),
         props: true,
     },
+    {
+        path: "/thirdies",
+        name: "thirdies",
+        component: () => import("@/views/thirdies/List.vue"),
+    },
 ];
 
 const router = createRouter({
