@@ -1,7 +1,9 @@
 <script setup>
+import { useProductsStore } from "@/stores/products";
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 
+const store = useProductsStore();
 const products = ref([]);
 const search = ref("");
 const router = useRouter();
@@ -12,34 +14,9 @@ function navToDetail(id) {
     });
 }
 
-async function fetchProducts(searchTerm) {
-    try {
-        const url = new URL("http://localhost:9000/products");
-
-        if (searchTerm.value !== "") {
-            url.searchParams.append("searchTerm", searchTerm);
-        }
-
-        const response = await fetch(url);
-
-        if (!response) {
-            throw new Error(`HTTP Error: status ${response.status}`);
-        }
-
-        const json = await response.json();
-        products.value = json;
-    } catch (error) {
-        console.error("Falha ao buscar produtos", error);
-    }
-}
-
-async function searchProducts(e) {
-    const key = e.keyCode;
-    if (key == 13) fetchProducts(search.value);
-}
-
 onMounted(async () => {
-    await fetchProducts(search);
+    await store.fetchProducts();
+    products.value = store.products;
 });
 </script>
 
@@ -51,7 +28,6 @@ onMounted(async () => {
                 class="search__input"
                 placeholder="Pesquise aqui"
                 v-model="search"
-                v-on:keydown="searchProducts"
             />
             <RouterLink to="/products/create">
                 <button class="search__new">Novo</button>
@@ -64,7 +40,9 @@ onMounted(async () => {
             <div v-for="product in products" :key="product.rowid">
                 <div class="listing__card" @click="navToDetail(product.rowid)">
                     <div class="listing__card-content">
-                        <div>{{ product.reference }}</div>
+                        <div>
+                            {{ product.reference }}
+                        </div>
                         <div class="listing__card-title">
                             {{ product.nameAlias || product.name }}
                         </div>
