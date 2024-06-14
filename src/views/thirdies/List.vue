@@ -1,45 +1,12 @@
 <script setup>
+import thirdiesService from "@/services/thirdiesService";
 import { onMounted, ref } from "vue";
-import { useRouter } from "vue-router";
 
 const thirdies = ref([]);
-const search = ref("");
-const router = useRouter();
-
-function navToDetail(id) {
-    router.push({
-        path: `/thirdies/${id}`,
-    });
-}
-
-async function fetchThirdies(searchTerm) {
-    try {
-        const url = new URL("http://localhost:9000/thirdies");
-
-        if (searchTerm.value !== "") {
-            url.searchParams.append("searchTerm", searchTerm);
-        }
-
-        const response = await fetch(url);
-
-        if (!response) {
-            throw new Error(`HTTP Error: status ${response.status}`);
-        }
-
-        const json = await response.json();
-        thirdies.value = json;
-    } catch (error) {
-        console.error("Falha ao buscar terceiros", error);
-    }
-}
-
-async function searchThirdies(e) {
-    const key = e.keyCode;
-    if (key == 13) fetchThirdies(search.value);
-}
 
 onMounted(async () => {
-    await fetchThirdies(search);
+    const response = await thirdiesService.getAllThirdies();
+    thirdies.value = response.data;
 });
 </script>
 
@@ -50,8 +17,6 @@ onMounted(async () => {
                 type="text"
                 class="search__input"
                 placeholder="Pesquise aqui"
-                v-model="search"
-                v-on:keydown="searchThirdies"
             />
             <RouterLink to="/products/create">
                 <button class="search__new">Novo</button>

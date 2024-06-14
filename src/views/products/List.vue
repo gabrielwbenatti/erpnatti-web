@@ -1,22 +1,26 @@
 <script setup>
-import { useProductsStore } from "@/stores/products";
+import productsService from "@/services/productsService";
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 
-const store = useProductsStore();
 const products = ref([]);
 const search = ref("");
 const router = useRouter();
 
 function navToDetail(id) {
-    router.push({
-        path: `/products/${id}`,
-    });
+    router.push({ path: `/products/${id}` });
+}
+
+async function filterProducts(searchTerm) {
+    await productsService
+        .getAllProducts(searchTerm)
+        .then((response) => (products.value = response.data));
 }
 
 onMounted(async () => {
-    await store.fetchProducts();
-    products.value = store.products;
+    await productsService
+        .getAllProducts()
+        .then((response) => (products.value = response.data));
 });
 </script>
 
