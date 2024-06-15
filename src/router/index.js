@@ -33,6 +33,11 @@ const routes = [
         component: () => import("@/views/thirdies/Edit.vue"),
         props: true,
     },
+    {
+        path: "/purchase-invoices/create",
+        name: "purchase-invoices.create",
+        component: () => import("@/views/purchase-invoices/Create.vue"),
+    },
 ];
 
 const router = createRouter({

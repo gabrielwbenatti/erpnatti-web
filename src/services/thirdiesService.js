@@ -1,8 +1,8 @@
 import apiService from "./apiService";
 
 export default {
-    async getAllThirdies() {
-        const response = await apiService.get("/thirdies");
+    async getAllThirdies(filters = {}) {
+        const response = await apiService.get("/thirdies", { params: filters });
         return response;
     },
 
