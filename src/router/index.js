@@ -27,6 +27,12 @@ const routes = [
         name: "thirdies",
         component: () => import("@/views/thirdies/List.vue"),
     },
+    {
+        path: "/thirdies/:id",
+        name: "thirdies.edit",
+        component: () => import("@/views/thirdies/Edit.vue"),
+        props: true,
+    },
 ];
 
 const router = createRouter({

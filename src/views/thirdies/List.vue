@@ -1,12 +1,17 @@
 <script setup>
+import router from "@/router";
 import thirdiesService from "@/services/thirdiesService";
 import { onMounted, ref } from "vue";
 
 const thirdies = ref([]);
 
+function navToDetail(id) {
+    router.push({ path: `/thirdies/${id}` });
+}
+
 onMounted(async () => {
     const response = await thirdiesService.getAllThirdies();
-    thirdies.value = response.data;
+    if (response.status === 200) thirdies.value = response.data;
 });
 </script>
 
@@ -27,7 +32,7 @@ onMounted(async () => {
 
         <div class="listing">
             <div v-for="thirdy in thirdies" :key="thirdy.rowid">
-                <div class="listing__card">
+                <div class="listing__card" @click="navToDetail(thirdy.rowid)">
                     <div class="listing__card-content">
                         <div class="listing__card-title">
                             <div>{{ thirdy.nameAlias || thirdy.name }}</div>
