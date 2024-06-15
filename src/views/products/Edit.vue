@@ -1,14 +1,13 @@
 <script setup>
 import productsService from "@/services/productsService";
-import { onBeforeMount, ref } from "vue";
+import { onBeforeMount, onMounted, ref } from "vue";
 
 const props = defineProps({ id: String });
-const product = ref(null);
+const product = ref({});
 
 onBeforeMount(async () => {
-    await productsService
-        .getById(props.id)
-        .then((response) => (product.value = response.data));
+    const response = await productsService.getById(props.id);
+    if (response.status === 200) product.value = response.data;
 });
 </script>
 

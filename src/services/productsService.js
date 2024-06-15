@@ -3,9 +3,8 @@ import apiService from "./apiService";
 export default {
     async getAllProducts(searchTerm) {
         let params = {};
-        if (searchTerm) {
-            params = { searchTerm: searchTerm };
-        }
+        if (searchTerm) params = { searchTerm: searchTerm };
+
         const response = await apiService.get("/products", {
             params: params,
         });
@@ -18,13 +17,19 @@ export default {
     },
 
     async getByReference(reference) {
-        let params = {};
-        if (reference) {
-            params = { reference: reference };
-        }
         const response = await apiService.get("/products", {
-            params: params,
+            params: { reference: reference },
         });
         return response;
+    },
+
+    async store(product) {
+        try {
+            const response = await apiService.post("/products", product);
+            return response;
+        } catch (error) {
+            console.log("Erro ao gravar produto:", error);
+            throw error;
+        }
     },
 };
