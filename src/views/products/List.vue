@@ -11,16 +11,9 @@ function navToDetail(id) {
     router.push({ path: `/products/${id}` });
 }
 
-async function filterProducts(searchTerm) {
-    await productsService
-        .getAllProducts(searchTerm)
-        .then((response) => (products.value = response.data));
-}
-
 onMounted(async () => {
-    await productsService
-        .getAllProducts()
-        .then((response) => (products.value = response.data));
+    const response = await productsService.getAllProducts();
+    if (response.status === 200) products.value = response.data;
 });
 </script>
 

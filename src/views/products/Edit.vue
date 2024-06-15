@@ -1,6 +1,6 @@
 <script setup>
 import productsService from "@/services/productsService";
-import { onBeforeMount, onMounted, ref } from "vue";
+import { onBeforeMount, ref } from "vue";
 
 const props = defineProps({ id: String });
 const product = ref({});
