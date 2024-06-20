@@ -1,13 +1,21 @@
 <script setup>
+import router from "@/router";
+import purchaseInvoicesService from "@/services/purchaseInvoicesService";
 import thirdiesService from "@/services/thirdiesService";
 import { onMounted, ref } from "vue";
 
 const suppliers = ref([]);
+const invoice = ref({});
 
 onMounted(async () => {
     const response = await thirdiesService.getAllThirdies({ isSupplier: true });
     if (response.status === 200) suppliers.value = response.data;
 });
+
+async function save() {
+    const storeResponse = await purchaseInvoicesService.store(invoice.value);
+    if (storeResponse.status === 201) router.back();
+}
 </script>
 
 <template>
@@ -18,6 +26,7 @@ onMounted(async () => {
             list="suppliers"
             name="supplier"
             id="supplier"
+            v-model="invoice.fkSupplierId"
         />
     </div>
 
@@ -30,6 +39,7 @@ onMounted(async () => {
             type="date"
             name="issuanceDate"
             id="issuanceDate"
+            v-model="invoice.issuanceDate"
         />
     </div>
 
@@ -42,13 +52,25 @@ onMounted(async () => {
             type="date"
             name="entryDate"
             id="entryDate"
+            v-model="invoice.entryDate"
         />
     </div>
 
-    <button type="submit">Salvar</button>
+    <div class="labeled__input">
+        <label class="labeled__input-label" for="entryDate">Valor total</label>
+        <input
+            class="labeled__input-input"
+            type="number"
+            name="totalAmount"
+            id="totalAmount"
+            v-model="invoice.totalAmount"
+        />
+    </div>
+
+    <button type="button" @click="save">Salvar</button>
 
     <datalist id="suppliers">
-        <option v-for="supplier in suppliers">{{ supplier.name }}</option>
+        <option v-for="supplier in suppliers">{{ supplier.rowid }}</option>
     </datalist>
 </template>
 
