@@ -1,4 +1,5 @@
 <script setup>
+import CSelect from "@/components/CSelect.vue";
 import router from "@/router";
 import purchaseInvoicesService from "@/services/purchaseInvoicesService";
 import thirdiesService from "@/services/thirdiesService";
@@ -29,6 +30,8 @@ async function save() {
             v-model="invoice.fkSupplierId"
         />
     </div>
+
+    <CSelect :options="suppliers" />
 
     <div class="labeled__input">
         <label class="labeled__input-label" for="issuanceDate"
