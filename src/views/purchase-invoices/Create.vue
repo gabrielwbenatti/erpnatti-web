@@ -15,23 +15,12 @@ onMounted(async () => {
 
 async function save() {
     const storeResponse = await purchaseInvoicesService.store(invoice.value);
-    if (storeResponse.status === 201) router.back();
+    if (storeResponse.status === 201) router.push("/thirdies");
 }
 </script>
 
 <template>
-    <div class="labeled__input">
-        <label class="labeled__input-label" for="supplier">Fornecedor</label>
-        <input
-            class="labeled__input-input"
-            list="suppliers"
-            name="supplier"
-            id="supplier"
-            v-model="invoice.fkSupplierId"
-        />
-    </div>
-
-    <CSelect :options="suppliers" />
+    <CSelect :options="suppliers" v-model="invoice.supplier" />
 
     <div class="labeled__input">
         <label class="labeled__input-label" for="issuanceDate"

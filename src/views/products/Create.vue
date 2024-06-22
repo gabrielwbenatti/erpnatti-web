@@ -20,7 +20,7 @@ async function save() {
         if (response.data.length == 0) {
             const storeResponse = await productsService.store(product.value);
             if (storeResponse.status === 201) {
-                router.back();
+                router.push("/products");
             }
         }
     } catch (error) {

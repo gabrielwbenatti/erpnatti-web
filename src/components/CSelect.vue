@@ -13,30 +13,37 @@ const filteredOptions = computed(() => {
     if (search.value === "") return [];
 
     return props.options.filter((item) => {
-        if (item.name.toLowerCase().includes(search.value.toLowerCase())) {
-            return item;
-        }
+        return item.name.toLowerCase().includes(search.value.toLowerCase());
     });
 });
 
 const setSelected = (item) => {
     isOpen.value = false;
     search.value = item.name;
-    emit("update:modelValue");
+    emit("update:modelValue", item);
 };
 
 const handleInput = (event) => {
     isOpen.value = true;
     search.value = event.target.value;
-    emit("update:modelValue");
+    emit("update:modelValue", search.value);
 };
 </script>
 
 <template>
     <div class="div__input">
-        <input type="text" v-model="search" @input="handleInput" />
+        <input
+            type="text"
+            v-model="search"
+            @input="handleInput"
+            placeholder="Digite para buscar..."
+        />
         <ul v-if="filteredOptions.length && isOpen">
-            <li v-for="option in filteredOptions" @click="setSelected(option)">
+            <li
+                v-for="option in filteredOptions"
+                :key="option.rowid"
+                @click="setSelected(option)"
+            >
                 {{ option.name }}
             </li>
         </ul>
