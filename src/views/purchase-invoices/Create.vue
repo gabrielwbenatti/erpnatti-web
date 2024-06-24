@@ -1,5 +1,4 @@
 <script setup>
-import CSelect from "@/components/CSelect.vue";
 import router from "@/router";
 import purchaseInvoicesService from "@/services/purchaseInvoicesService";
 import thirdiesService from "@/services/thirdiesService";
@@ -20,7 +19,14 @@ async function save() {
 </script>
 
 <template>
-    <CSelect :options="suppliers" v-model="invoice.supplier" />
+    <VAutocomplete
+        v-model="invoice.supplier"
+        :items="suppliers"
+        :return-object="true"
+        :item-title="'name'"
+        :label="'Fornecedor'"
+        :variant="'outlined'"
+    />
 
     <div class="labeled__input">
         <label class="labeled__input-label" for="issuanceDate"

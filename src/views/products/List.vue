@@ -83,9 +83,7 @@ onMounted(async () => {
 
         &:hover {
             cursor: pointer;
-            color: #efefef;
             font-weight: bold;
-            background-color: rgb(28, 28, 28);
         }
 
         .listing__card-content {

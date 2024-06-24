@@ -110,7 +110,9 @@ async function save() {
         </div>
 
         <button type="button" v-on:click="save()">Salvar</button>
-        <button type="button" @click="router.back()">Cancelar</button>
+        <button type="button" @click="router.push('/products')">
+            Cancelar
+        </button>
     </main>
 </template>
 
