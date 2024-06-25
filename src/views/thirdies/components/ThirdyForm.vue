@@ -12,6 +12,7 @@ const emits = defineEmits(["onSubmit"]);
 <template>
     <h2 v-if="props.isEditMode">{{ props.initialData.name }}</h2>
     <h2 v-else>Novo Cadastro</h2>
+    <br />
 
     <BaseForm :mainRoute="'thirdies'" @onSubmit="emits('onSubmit')">
         <div class="labeled__input">
