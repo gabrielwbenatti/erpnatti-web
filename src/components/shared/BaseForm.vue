@@ -8,9 +8,7 @@ const props = defineProps({
 const emits = defineEmits(["onSubmit"]);
 const router = useRouter();
 
-function onCancel() {
-    router.push(`/${props.mainRoute}`);
-}
+const onCancel = () => router.push(`/${props.mainRoute}`);
 </script>
 
 <template>
