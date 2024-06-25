@@ -17,10 +17,5 @@ async function save() {
 </script>
 
 <template>
-    <div>
-        <h2>Novo Terceiro</h2>
-        <br />
-    </div>
-
     <ThirdyForm :isEditMode="false" :initialData="thirdy" @onSubmit="save" />
 </template>
