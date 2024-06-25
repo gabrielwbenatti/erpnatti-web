@@ -1,6 +1,7 @@
 <script setup>
 import thirdiesService from "@/services/thirdiesService";
 import { onBeforeMount, ref } from "vue";
+import ThirdyForm from "./components/ThirdyForm.vue";
 
 const props = defineProps({ id: String });
 const thirdy = ref({});
@@ -12,7 +13,5 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-    <div>Terceiro {{ thirdy.rowid }}</div>
-    <br />
-    <div>{{ thirdy.name }}</div>
+    <ThirdyForm :isEditMode="true" :initialData="thirdy" />
 </template>

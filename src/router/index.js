@@ -22,6 +22,12 @@ const routes = [
         component: () => import("@/views/products/Edit.vue"),
         props: true,
     },
+    ,
+    {
+        path: "/thirdies/create",
+        name: "thirdies.create",
+        component: () => import("@/views/thirdies/Create.vue"),
+    },
     {
         path: "/thirdies",
         name: "thirdies",
