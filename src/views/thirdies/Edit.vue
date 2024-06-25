@@ -13,9 +13,5 @@ onBeforeMount(async () => {
 </script>
 
 <template>
-    <div>Terceiro {{ thirdy.rowid }}</div>
-    <br />
-    <div>{{ thirdy.name }}</div>
-
-    <ThirdyForm />
+    <ThirdyForm :isEditMode="true" :initialData="thirdy" />
 </template>

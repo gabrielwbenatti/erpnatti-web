@@ -22,5 +22,5 @@ async function save() {
         <br />
     </div>
 
-    <ThirdyForm :isEditMode="false" :initialData="thirdy" />
+    <ThirdyForm :isEditMode="false" :initialData="thirdy" @onSubmit="save" />
 </template>

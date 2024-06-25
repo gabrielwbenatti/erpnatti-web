@@ -1,3 +1,12 @@
+<script setup>
+const props = defineProps({
+    initialData: { type: Object, default: () => ({}) },
+    isEditMode: { type: Boolean, required: true },
+});
+
+const emits = defineEmits(["onSubmit"]);
+</script>
+
 <template>
     <div>
         <form action="">
@@ -59,13 +68,6 @@
         </form>
     </div>
 </template>
-
-<script setup>
-const props = defineProps({
-    initialData: { type: Object, default: () => ({}) },
-    isEditMode: { type: Boolean, required: true },
-});
-</script>
 
 <style scoped>
 .labeled__input {
