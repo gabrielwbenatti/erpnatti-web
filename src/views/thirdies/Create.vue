@@ -16,7 +16,7 @@ async function save() {
 </script>
 
 <template>
-    <main>
+    <form action="">
         <div>
             <h2>Novo Terceiro</h2>
             <br />
@@ -75,7 +75,7 @@ async function save() {
         <button type="button" @click="router.push('/products')">
             Cancelar
         </button>
-    </main>
+    </form>
 </template>
 
 <style scoped>
