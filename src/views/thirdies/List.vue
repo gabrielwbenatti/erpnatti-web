@@ -23,7 +23,7 @@ onMounted(async () => {
                 class="search__input"
                 placeholder="Pesquise aqui"
             />
-            <RouterLink to="/products/create">
+            <RouterLink to="/thirdies/create">
                 <button class="search__new">Novo</button>
             </RouterLink>
         </div>
