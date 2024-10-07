@@ -11,9 +11,19 @@ function navToDetail(id) {
     router.push({ path: `/products/${id}` });
 }
 
+async function fetchData() {
+    try {
+        const response = await productsService.getAllProducts();
+        if (response.status === 200) {
+            products.value = response.data.data;
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 onMounted(async () => {
-    const response = await productsService.getAllProducts();
-    if (response.status === 200) products.value = response.data;
+    await fetchData();
 });
 </script>
 
@@ -34,14 +44,11 @@ onMounted(async () => {
         <br />
 
         <div class="listing">
-            <div v-for="product in products" :key="product.rowid">
-                <div class="listing__card" @click="navToDetail(product.rowid)">
+            <div v-for="product in products" :key="product.id">
+                <div class="listing__card" @click="navToDetail(product.id)">
                     <div class="listing__card-content">
-                        <div>
-                            {{ product.reference }}
-                        </div>
                         <div class="listing__card-title">
-                            {{ product.nameAlias || product.name }}
+                            {{ product.nome }}
                         </div>
                     </div>
                 </div>

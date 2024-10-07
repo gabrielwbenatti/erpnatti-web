@@ -25,6 +25,7 @@ export default {
 
     async store(product) {
         try {
+            console.log(product);
             const response = await apiService.post("/products", product);
             return response;
         } catch (error) {

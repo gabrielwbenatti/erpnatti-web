@@ -1,14 +1,14 @@
 <script setup>
 import router from "@/router";
 import purchaseInvoicesService from "@/services/purchaseInvoicesService";
-import thirdiesService from "@/services/thirdiesService";
+import peopleService from "@/services/personService";
 import { onMounted, ref } from "vue";
 
 const suppliers = ref([]);
 const invoice = ref({});
 
 onMounted(async () => {
-    const response = await thirdiesService.getAllThirdies({ isSupplier: true });
+    const response = await peopleService.getAllThirdies({ isSupplier: true });
     if (response.status === 200) suppliers.value = response.data;
 });
 

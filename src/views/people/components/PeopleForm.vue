@@ -10,11 +10,11 @@ const emits = defineEmits(["onSubmit"]);
 </script>
 
 <template>
-    <h2 v-if="props.isEditMode">{{ props.initialData.name }}</h2>
+    <h2 v-if="props.isEditMode">{{ props.initialData.razao_social }}</h2>
     <h2 v-else>Novo Cadastro</h2>
     <br />
 
-    <BaseForm :mainRoute="'thirdies'" @onSubmit="emits('onSubmit')">
+    <BaseForm :mainRoute="'people'" @onSubmit="emits('onSubmit')">
         <div class="labeled__input">
             <label for="name" class="labeled__input-label">Nome</label>
             <input
@@ -22,7 +22,7 @@ const emits = defineEmits(["onSubmit"]);
                 name="name"
                 id="name"
                 autocomplete="off"
-                v-model="props.initialData.name"
+                v-model="props.initialData.razao_social"
                 class="labeled__input-input"
             />
         </div>
@@ -36,7 +36,7 @@ const emits = defineEmits(["onSubmit"]);
                 name="nameAlias"
                 id="nameAlias"
                 autocomplete="off"
-                v-model="props.initialData.nameAlias"
+                v-model="props.initialData.nome_fantasia"
                 class="labeled__input-input"
             />
         </div>
@@ -48,20 +48,9 @@ const emits = defineEmits(["onSubmit"]);
                 name="document"
                 id="document"
                 autocomplete="off"
-                v-model="props.initialData.document"
+                v-model="props.initialData.cpf_cnpj"
                 class="labeled__input-input"
             />
-        </div>
-
-        <div>
-            <input
-                type="checkbox"
-                name="isSupplier"
-                id="isSupplier"
-                v-model="props.initialData.isSupplier"
-                class="checkbox"
-            />
-            <label for="isSupplier">É Fornecedor</label>
         </div>
     </BaseForm>
 </template>

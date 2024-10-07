@@ -5,23 +5,17 @@ import { ref } from "vue";
 import { useRouter } from "vue-router";
 
 const product = ref({
+    nome: "",
     status: true,
-    toSell: true,
-    toBuy: true,
 });
 
 const router = useRouter();
 
 async function save() {
     try {
-        const response = await productsService.getByReference(
-            product.value.reference
-        );
-        if (response.data.length == 0) {
-            const storeResponse = await productsService.store(product.value);
-            if (storeResponse.status === 201) {
-                router.push("/products");
-            }
+        const storeResponse = await productsService.store(product.value);
+        if (storeResponse.status === 201) {
+            router.push("/products");
         }
     } catch (error) {
         console.error(error);

@@ -24,19 +24,19 @@ const routes = [
     },
     ,
     {
-        path: "/thirdies/create",
-        name: "thirdies.create",
-        component: () => import("@/views/thirdies/Create.vue"),
+        path: "/people/create",
+        name: "people.create",
+        component: () => import("@/views/people/Create.vue"),
     },
     {
-        path: "/thirdies",
-        name: "thirdies",
-        component: () => import("@/views/thirdies/List.vue"),
+        path: "/people",
+        name: "people",
+        component: () => import("@/views/people/List.vue"),
     },
     {
-        path: "/thirdies/:id",
-        name: "thirdies.edit",
-        component: () => import("@/views/thirdies/Edit.vue"),
+        path: "/people/:id",
+        name: "people.edit",
+        component: () => import("@/views/people/Edit.vue"),
         props: true,
     },
     {

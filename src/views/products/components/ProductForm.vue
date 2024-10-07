@@ -11,25 +11,11 @@ const props = defineProps({
 </script>
 
 <template>
-    <h2 v-if="props.isEditMode">{{ props.initialData.name }}</h2>
+    <h2 v-if="props.isEditMode">{{ props.initialData.nome }}</h2>
     <h2 v-else>Novo Cadastro</h2>
     <br />
 
     <BaseForm :mainRoute="'products'" @onSubmit="emits('onSubmit')">
-        <div class="labeled__input">
-            <label for="reference" class="labeled__input-label"
-                >Referência</label
-            >
-            <input
-                type="text"
-                name="reference"
-                id="reference"
-                autocomplete="off"
-                v-model="props.initialData.reference"
-                class="labeled__input-input"
-            />
-        </div>
-
         <div class="labeled__input">
             <label for="name" class="labeled__input-label">Nome</label>
             <input
@@ -37,21 +23,7 @@ const props = defineProps({
                 name="name"
                 id="name"
                 autocomplete="off"
-                v-model="props.initialData.name"
-                class="labeled__input-input"
-            />
-        </div>
-
-        <div class="labeled__input">
-            <label for="nameAlias" class="labeled__input-label"
-                >Nome Apelido</label
-            >
-            <input
-                type="text"
-                name="nameAlias"
-                id="nameAlias"
-                autocomplete="off"
-                v-model="props.initialData.nameAlias"
+                v-model="props.initialData.nome"
                 class="labeled__input-input"
             />
         </div>
@@ -65,28 +37,6 @@ const props = defineProps({
                 class="checkbox"
             />
             <label for="status">Status</label>
-        </div>
-
-        <div style="display: block">
-            <input
-                type="checkbox"
-                name="toSell"
-                id="toSell"
-                v-model="props.initialData.toSell"
-                class="checkbox"
-            />
-            <label for="toSell">Para Vender</label>
-        </div>
-
-        <div>
-            <input
-                type="checkbox"
-                name="toBuy"
-                id="toBuy"
-                v-model="props.initialData.toBuy"
-                class="checkbox"
-            />
-            <label for="toBuy">Para Comprar</label>
         </div>
     </BaseForm>
 </template>

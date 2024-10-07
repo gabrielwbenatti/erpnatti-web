@@ -1,17 +1,27 @@
 <script setup>
 import router from "@/router";
-import thirdiesService from "@/services/thirdiesService";
+import thirdiesService from "@/services/personService";
 import { onMounted, ref } from "vue";
 
-const thirdies = ref([]);
+const people = ref([]);
 
 function navToDetail(id) {
-    router.push({ path: `/thirdies/${id}` });
+    router.push({ path: `/people/${id}` });
+}
+
+async function fetchData() {
+    try {
+        const response = await thirdiesService.getAllPeople();
+        if (response.status === 200) {
+            people.value = response.data.data;
+        }
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 onMounted(async () => {
-    const response = await thirdiesService.getAllThirdies();
-    if (response.status === 200) thirdies.value = response.data;
+    await fetchData();
 });
 </script>
 
@@ -23,7 +33,7 @@ onMounted(async () => {
                 class="search__input"
                 placeholder="Pesquise aqui"
             />
-            <RouterLink to="/thirdies/create">
+            <RouterLink to="/people/create">
                 <button class="search__new">Novo</button>
             </RouterLink>
         </div>
@@ -31,12 +41,12 @@ onMounted(async () => {
         <br />
 
         <div class="listing">
-            <div v-for="thirdy in thirdies" :key="thirdy.rowid">
-                <div class="listing__card" @click="navToDetail(thirdy.rowid)">
+            <div v-for="person in people" :key="person.id">
+                <div class="listing__card" @click="navToDetail(person.id)">
                     <div class="listing__card-content">
                         <div class="listing__card-title">
-                            <div>{{ thirdy.nameAlias || thirdy.name }}</div>
-                            <div>{{ thirdy.document }}</div>
+                            <div>{{ person.nome }}</div>
+                            <div>{{ person.cpf_cnpj }}</div>
                         </div>
                     </div>
                 </div>
