@@ -1,6 +1,6 @@
 <script setup>
 import router from "@/router";
-import thirdiesService from "@/services/personService";
+import personService from "@/services/personService";
 import { onMounted, ref } from "vue";
 
 const people = ref([]);
@@ -11,7 +11,7 @@ function navToDetail(id) {
 
 async function fetchData() {
     try {
-        const response = await thirdiesService.getAllPeople();
+        const response = await personService.getAllPeople();
         if (response.status === 200) {
             people.value = response.data.data;
         }
@@ -26,6 +26,13 @@ onMounted(async () => {
 </script>
 
 <template>
+    <nav>
+        <ul>
+            <li><a href="/">Inicio</a></li>
+        </ul>
+        <br />
+    </nav>
+
     <main>
         <div class="search">
             <input
@@ -45,7 +52,7 @@ onMounted(async () => {
                 <div class="listing__card" @click="navToDetail(person.id)">
                     <div class="listing__card-content">
                         <div class="listing__card-title">
-                            <div>{{ person.nome }}</div>
+                            <div>{{ person.razao_social }}</div>
                             <div>{{ person.cpf_cnpj }}</div>
                         </div>
                     </div>

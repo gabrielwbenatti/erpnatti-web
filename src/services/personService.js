@@ -11,9 +11,9 @@ export default {
         return response;
     },
 
-    async store(thirdy) {
+    async store(people) {
         try {
-            const response = await apiService.post("/people", thirdy);
+            const response = await apiService.post("/people", people);
             return response;
         } catch (error) {
             console.log("Erro ao gravar produto:", error);

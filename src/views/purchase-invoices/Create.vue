@@ -7,14 +7,20 @@ import { onMounted, ref } from "vue";
 const suppliers = ref([]);
 const invoice = ref({});
 
+async function fetchSuppliers() {
+    const response = await peopleService.getAllPeople();
+    if (response.status === 200) {
+        suppliers.value = response.data.data;
+    }
+}
+
 onMounted(async () => {
-    const response = await peopleService.getAllThirdies({ isSupplier: true });
-    if (response.status === 200) suppliers.value = response.data;
+    await fetchSuppliers();
 });
 
 async function save() {
     const storeResponse = await purchaseInvoicesService.store(invoice.value);
-    if (storeResponse.status === 201) router.push("/thirdies");
+    if (storeResponse.status === 201) router.push("/people");
 }
 </script>
 
@@ -23,7 +29,8 @@ async function save() {
         v-model="invoice.supplier"
         :items="suppliers"
         :return-object="true"
-        :item-title="'name'"
+        :title="'nome'"
+        :item-title="'nome'"
         :label="'Fornecedor'"
         :variant="'outlined'"
     />

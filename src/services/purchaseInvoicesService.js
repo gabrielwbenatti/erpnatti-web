@@ -2,12 +2,14 @@ import apiService from "./apiService";
 
 export default {
     async getAllInvoices() {
-        const response = await apiService.get();
+        const response = await apiService.get("/purchases");
+
+        return response;
     },
 
     async store(invoice) {
         try {
-            const response = await apiService.post("/purchase-invoices", {
+            const response = await apiService.post("/purchases", {
                 ...invoice,
             });
             return response;

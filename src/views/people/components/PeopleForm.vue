@@ -6,6 +6,8 @@ const props = defineProps({
     isEditMode: { type: Boolean, required: true },
 });
 
+const PERSON_TYPE = ["CLIENTE", "FORNECEDOR", "FUNCIONARIO", "TRANSPORTADORA"];
+
 const emits = defineEmits(["onSubmit"]);
 </script>
 
@@ -52,6 +54,13 @@ const emits = defineEmits(["onSubmit"]);
                 class="labeled__input-input"
             />
         </div>
+
+        <VSelect
+            v-model="props.initialData.tipo_pessoa"
+            :items="PERSON_TYPE"
+            multiple
+            label="Tipo de Pessoa"
+        />
     </BaseForm>
 </template>
 

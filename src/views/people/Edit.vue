@@ -1,16 +1,20 @@
 <script setup>
-import thirdiesService from "@/services/personService";
+import personService from "@/services/personService";
 import { onBeforeMount, ref } from "vue";
 import PeopleForm from "./components/PeopleForm.vue";
 
 const props = defineProps({ id: String });
 const person = ref({});
 
-onBeforeMount(async () => {
-    const response = await thirdiesService.getById(props.id);
+async function fetchData() {
+    const response = await personService.getById(props.id);
     if (response.status === 200) {
-        person.value = response.data;
+        person.value = response.data.data;
     }
+}
+
+onBeforeMount(async () => {
+    await fetchData();
 });
 </script>
 

@@ -28,6 +28,13 @@ onMounted(async () => {
 </script>
 
 <template>
+    <nav>
+        <ul>
+            <li><a href="/">Inicio</a></li>
+        </ul>
+        <br />
+    </nav>
+
     <main>
         <div class="search">
             <input

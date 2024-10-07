@@ -40,8 +40,13 @@ const routes = [
         props: true,
     },
     {
-        path: "/purchase-invoices/create",
-        name: "purchase-invoices.create",
+        path: "/purchases",
+        name: "purchases",
+        component: () => import("@/views/purchase-invoices/List.vue"),
+    },
+    {
+        path: "/purchases/create",
+        name: "purchases.create",
         component: () => import("@/views/purchase-invoices/Create.vue"),
     },
 ];
