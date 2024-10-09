@@ -1,7 +1,10 @@
 "use client";
 
+import MainWrapperComp from "@/components/shared/main.wrapper";
 import { Product } from "@/models/Product";
 import * as productService from "@/services/productService";
+import { Button } from "@nextui-org/button";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function ProductsPage() {
@@ -18,15 +21,27 @@ export default function ProductsPage() {
 
   return (
     <>
-      <h1>ProductsPage</h1>
+      <Link href="/products/create">
+        <Button variant="solid">Novo</Button>
+      </Link>
 
-      <main>
+      <MainWrapperComp>
         <ul>
           {products.map((product) => (
-            <li key={product.id}>{product.nome}</li>
+            <li
+              key={product.id}
+              className="flex hover:bg-light-on-surface hover:bg-opacity-[.08] md:rounded-lg md:p-2"
+            >
+              <a
+                href={`/products/edit/${product.id}`}
+                className="flex w-full flex-col"
+              >
+                <span>{product.nome}</span>
+              </a>
+            </li>
           ))}
         </ul>
-      </main>
+      </MainWrapperComp>
     </>
   );
 }

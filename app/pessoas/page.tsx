@@ -5,6 +5,7 @@ import PeopleGridComp from "../../components/people/people.grid";
 import { Pessoa } from "@/models/Pessoa";
 import * as peopleServices from "@/services/peopleService";
 import { useEffect, useState } from "react";
+import MainWrapperComp from "@/components/shared/main.wrapper";
 
 export default function PessoasPage() {
   const [people, setPeople] = useState<Pessoa[]>([]);
@@ -24,9 +25,9 @@ export default function PessoasPage() {
         <PeopleHeaderComp />
       </header>
 
-      <main>
+      <MainWrapperComp>
         <PeopleGridComp rows={people} />
-      </main>
+      </MainWrapperComp>
     </>
   );
 }
