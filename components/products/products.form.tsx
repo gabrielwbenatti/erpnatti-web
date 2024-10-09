@@ -1,6 +1,6 @@
 import { Product } from "@/models/Product";
 import { Button } from "@nextui-org/button";
-import { Checkbox, CheckboxGroup } from "@nextui-org/checkbox";
+import { Checkbox } from "@nextui-org/checkbox";
 import { Input } from "@nextui-org/input";
 import { ChangeEvent, useEffect, useState } from "react";
 

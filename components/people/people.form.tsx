@@ -5,7 +5,6 @@ import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
 import { Select, SelectItem } from "@nextui-org/select";
 import { SharedSelection } from "@nextui-org/system";
-import { useRouter } from "next/navigation";
 import { ChangeEvent, useEffect, useState } from "react";
 
 export interface PeopleFormCompProps {
@@ -73,21 +72,42 @@ export default function PeopleFormComp({
           onChange={handleInputChange}
           autoComplete="off"
         />
-      </div>
 
-      <Select
-        label="Tipo de Pessoa"
-        selectionMode="multiple"
-        items={TYPES_LIST}
-        selectedKeys={new Set(person.tipo_pessoa)}
-        onSelectionChange={handleSelectChange}
-      >
-        {(items) => (
-          <SelectItem key={items.key} value={items.key}>
-            {items.label}
-          </SelectItem>
-        )}
-      </Select>
+        <Select
+          label="Tipo de Pessoa"
+          selectionMode="multiple"
+          items={TYPES_LIST}
+          selectedKeys={new Set(person.tipo_pessoa)}
+          onSelectionChange={handleSelectChange}
+        >
+          {(items) => (
+            <SelectItem key={items.key} value={items.key}>
+              {items.label}
+            </SelectItem>
+          )}
+        </Select>
+
+        <div className="w-full md:col-span-2 md:flex md:items-center md:pt-4 md:text-small">
+          <span>Endereço</span>
+        </div>
+
+        <Input
+          label="Endereço"
+          required
+          name="endereco"
+          value={person.endereco}
+          onChange={handleInputChange}
+          autoComplete="off"
+        />
+        <Input
+          label="Número"
+          required
+          name="numero"
+          value={person.numero}
+          onChange={handleInputChange}
+          autoComplete="off"
+        />
+      </div>
 
       <div className="flex">
         <Button variant="solid" type="button" onClick={handleSubmit}>
