@@ -1,6 +1,7 @@
 export interface Product {
   id?: number;
   nome: string;
+  referencia?: string;
   codigo_barra?: string;
   movimenta_estoque: boolean;
   status: boolean;

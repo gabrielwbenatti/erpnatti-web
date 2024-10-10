@@ -90,8 +90,7 @@ export default function PeopleFormComp({
         <span className="md:col-span-4 md:mt-3 md:text-small">Endereço</span>
         <Input
           label="CEP"
-          name="cep"
-          placeholder="__.___-___"
+          name="cep" 
           value={person.cep || ""}
           onChange={handleInputChange}
           autoComplete="off"
@@ -124,7 +123,7 @@ export default function PeopleFormComp({
       </div>
 
       <div className="flex">
-        <Button variant="solid" type="button" onClick={onSubmit}>
+        <Button variant="solid" type="button"  onClick={onSubmit}>
           Salvar
         </Button>
         <Button variant="light" type="button" onClick={onCancel}>

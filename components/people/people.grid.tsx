@@ -19,7 +19,7 @@ export default function PeopleGridComp({ rows }: PessoasGridCompProps) {
               className="flex w-full flex-col"
             >
               <span className="font-bold">{row.razao_social}</span>
-              <span className="text-sm">{row.cpf_cnpj}</span>
+              <span className="text-small">{row.cpf_cnpj}</span>
             </a>
           </li>
         ))}

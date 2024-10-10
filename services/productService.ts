@@ -17,9 +17,16 @@ const store = async (product: Product) => {
   return response;
 };
 
+const update = async (product: Product) => {
+  const { id } = product;
+  const body = JSON.stringify(product);
+  const response = await api.put(`/products/${id}`, body);
+  return response;
+};
+
 const remove = async (id: number) => {
   const response = await api.delete(`/products/${id}`);
   return response;
 };
 
-export { index, show, store, remove };
+export { index, show, store, update, remove };

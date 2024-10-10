@@ -27,17 +27,15 @@ export default function ProductsCreatePage() {
   const handleCancel = () => router.push("/products");
 
   return (
-    <div>
-      <MainWrapperComp>
-        <h1>Novo Produto</h1>
+    <MainWrapperComp>
+      <h1 className="text-xl font-bold">Novo Cadastro</h1>
 
-        <ProductsFormComp
-          initialData={product}
-          onChangeData={setProduct}
-          onSubmit={handleSubmit}
-          onCancel={handleCancel}
-        />
-      </MainWrapperComp>
-    </div>
+      <ProductsFormComp
+        initialData={product}
+        onChangeData={setProduct}
+        onSubmit={handleSubmit}
+        onCancel={handleCancel}
+      />
+    </MainWrapperComp>
   );
 }

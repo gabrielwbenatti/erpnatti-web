@@ -36,7 +36,10 @@ export default function ProductsPage() {
                 href={`/products/edit/${product.id}`}
                 className="flex w-full flex-col"
               >
-                <span>{product.nome}</span>
+                <span className="font-bold">{product.nome}</span>
+                {product.referencia && (
+                  <span className="text-small">{product.referencia}</span>
+                )}
               </a>
             </li>
           ))}

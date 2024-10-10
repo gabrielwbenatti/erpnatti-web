@@ -24,7 +24,15 @@ export default function ProductsEditPage({ params }: ProductsEditPageProps) {
     fetchData();
   }, [params.id]);
 
-  const handleSubmit = () => console.log("prod", product);
+  const handleSubmit = async () => {
+    if (!product) return;
+
+    await productService.update(product).then((res) => {
+      if (res.status === 202) {
+        router.push("/products");
+      }
+    });
+  };
 
   const handleCancel = () => router.push("/products");
 

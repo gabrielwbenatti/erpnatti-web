@@ -1,6 +1,7 @@
 "use client";
 
 import PeopleFormComp from "@/components/people/people.form";
+import MainWrapperComp from "@/components/shared/main.wrapper";
 import { Pessoa } from "@/models/Pessoa";
 import * as peopleService from "@/services/peopleService";
 import { useRouter } from "next/navigation";
@@ -20,15 +21,15 @@ export default function PessoasNovoPage() {
   const handleSubmit = async () => {
     await peopleService.store(person).then((res) => {
       if (res.status === 201) {
-        router.push("/products");
+        router.push("/pessoas");
       }
     });
   };
 
-  const handleCancel = () => router.push("/products");
+  const handleCancel = () => router.push("/pessoas");
 
   return (
-    <div className="md:space-y-3 md:px-8 md:py-3">
+    <MainWrapperComp>
       <h1 className="text-xl font-bold">Novo Cadastro</h1>
 
       <PeopleFormComp
@@ -37,6 +38,6 @@ export default function PessoasNovoPage() {
         onSubmit={handleSubmit}
         onCancel={handleCancel}
       />
-    </div>
+    </MainWrapperComp>
   );
 }

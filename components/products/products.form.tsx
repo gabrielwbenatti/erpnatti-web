@@ -24,8 +24,17 @@ export default function ProductsFormComp({
   };
 
   return (
-    <form className="space-y-3">
-      <div className="grid gap-3 md:grid-cols-2">
+    <form className="md:space-y-3">
+      <span className="md:col-span-4 md:mt-3 md:text-small">Cadastral</span>
+      <div className="md:grid md:grid-cols-4 md:gap-3">
+        <Input
+          label="Referência"
+          name="referencia"
+          value={product.referencia}
+          onChange={handleInputChange}
+          autoComplete="off"
+          className="md:col-span-1"
+        />
         <Input
           label="Nome"
           required
@@ -33,7 +42,7 @@ export default function ProductsFormComp({
           value={product.nome}
           onChange={handleInputChange}
           autoComplete="off"
-          className="col-span-2"
+          className="md:col-span-3"
         />
         <Input
           label="Código de Barras"
