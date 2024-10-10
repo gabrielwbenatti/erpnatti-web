@@ -44,10 +44,10 @@ export default function ProductsEditPage({ params }: ProductsEditPageProps) {
 
           <ProductsFormComp
             initialData={product}
-            onProductChange={setProduct}
-            handleSubmit={handleSubmit}
-            handleCancel={handleCancel}
-            handleDelete={handleDelete}
+            onChangeData={setProduct}
+            onSubmit={handleSubmit}
+            onCancel={handleCancel}
+            onDelete={handleDelete}
           />
         </>
       ) : (

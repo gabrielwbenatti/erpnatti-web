@@ -28,7 +28,16 @@ export default function PessoasEditPage({
 
   const handlePersonChange = (pessoa: Pessoa) => setPerson(pessoa);
 
-  const handleSubmit = () => router.push("/pessoas");
+  const handleSubmit = async () => {
+    if (!person) return;
+
+    await peopleServices.update(person).then((res) => {
+      if (res.status === 200) {
+        router.push("/pessoas");
+      }
+    });
+  };
+
   const handleCancel = () => router.push("/pessoas");
 
   if (!person) {
@@ -43,9 +52,9 @@ export default function PessoasEditPage({
 
           <PeopleFormComp
             initialData={person}
-            handleSubmit={handleSubmit}
-            handleCancelClick={handleCancel}
-            onPersonChange={handlePersonChange}
+            onChangeData={handlePersonChange}
+            onSubmit={handleSubmit}
+            onCancel={handleCancel}
           />
         </>
       ) : (

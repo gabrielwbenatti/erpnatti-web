@@ -5,6 +5,7 @@ export interface Pessoa {
   cpf_cnpj: string;
   tipo_pessoa: string[];
 
+  cep?: string;
   endereco?: string;
   bairro?: string;
   numero?: string;

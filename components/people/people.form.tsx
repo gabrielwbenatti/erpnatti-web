@@ -1,18 +1,12 @@
 "use client";
 
 import { Pessoa } from "@/models/Pessoa";
+import { FormProps } from "@/types/FormProps";
 import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
 import { Select, SelectItem } from "@nextui-org/select";
 import { SharedSelection } from "@nextui-org/system";
 import { ChangeEvent, useEffect, useState } from "react";
-
-export interface PeopleFormCompProps {
-  initialData: Pessoa;
-  onPersonChange: (pessoa: Pessoa) => void;
-  handleSubmit?: () => void;
-  handleCancelClick?: () => void;
-}
 
 const TYPES_LIST: { key: string; label: string }[] = [
   { key: "CLIENTE", label: "Cliente" },
@@ -23,10 +17,11 @@ const TYPES_LIST: { key: string; label: string }[] = [
 
 export default function PeopleFormComp({
   initialData,
-  onPersonChange,
-  handleSubmit,
-  handleCancelClick,
-}: PeopleFormCompProps) {
+  onChangeData,
+  onCancel,
+  onDelete,
+  onSubmit,
+}: FormProps<Pessoa>) {
   const [person, setPerson] = useState<Pessoa>(initialData);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -43,12 +38,13 @@ export default function PeopleFormComp({
   };
 
   useEffect(() => {
-    onPersonChange(person);
-  }, [person, onPersonChange]);
+    onChangeData(person);
+  }, [person]);
 
   return (
     <form className="md:space-y-3">
-      <div className="md:grid md:grid-cols-2 md:gap-3">
+      <span className="md:col-span-4 md:mt-3 md:text-small">Cadastral</span>
+      <div className="md:grid md:grid-cols-4 md:gap-3">
         <Input
           label="Razão Social"
           required
@@ -56,6 +52,7 @@ export default function PeopleFormComp({
           value={person.razao_social}
           onChange={handleInputChange}
           autoComplete="off"
+          className="md:col-span-2"
         />
         <Input
           label="Nome Fantasia"
@@ -63,6 +60,7 @@ export default function PeopleFormComp({
           value={person.nome_fantasia || ""}
           onChange={handleInputChange}
           autoComplete="off"
+          className="md:col-span-2"
         />
         <Input
           label="CPF/CNPJ"
@@ -71,6 +69,7 @@ export default function PeopleFormComp({
           value={person.cpf_cnpj}
           onChange={handleInputChange}
           autoComplete="off"
+          className="md:col-span-1"
         />
 
         <Select
@@ -79,6 +78,7 @@ export default function PeopleFormComp({
           items={TYPES_LIST}
           selectedKeys={new Set(person.tipo_pessoa)}
           onSelectionChange={handleSelectChange}
+          className="md:col-span-3"
         >
           {(items) => (
             <SelectItem key={items.key} value={items.key}>
@@ -87,34 +87,51 @@ export default function PeopleFormComp({
           )}
         </Select>
 
-        <div className="w-full md:col-span-2 md:flex md:items-center md:pt-4 md:text-small">
-          <span>Endereço</span>
-        </div>
-
+        <span className="md:col-span-4 md:mt-3 md:text-small">Endereço</span>
         <Input
-          label="Endereço"
-          required
-          name="endereco"
-          value={person.endereco}
+          label="CEP"
+          name="cep"
+          placeholder="__.___-___"
+          value={person.cep || ""}
           onChange={handleInputChange}
           autoComplete="off"
+          className="md:col-span-1"
+        />
+        <Input
+          label="Endereço"
+          name="endereco"
+          value={person.endereco || ""}
+          onChange={handleInputChange}
+          autoComplete="off"
+          className="md:col-span-2"
         />
         <Input
           label="Número"
-          required
           name="numero"
-          value={person.numero}
+          value={person.numero || ""}
           onChange={handleInputChange}
           autoComplete="off"
+          className="md:col-span-1"
+        />
+        <Input
+          label="Complemento"
+          name="complemento"
+          value={person.complemento || ""}
+          onChange={handleInputChange}
+          autoComplete="off"
+          className="col-span-4"
         />
       </div>
 
       <div className="flex">
-        <Button variant="solid" type="button" onClick={handleSubmit}>
+        <Button variant="solid" type="button" onClick={onSubmit}>
           Salvar
         </Button>
-        <Button variant="light" type="button" onClick={handleCancelClick}>
+        <Button variant="light" type="button" onClick={onCancel}>
           Cancelar
+        </Button>
+        <Button variant="light" type="button" color="danger" onClick={onDelete}>
+          Excluir
         </Button>
       </div>
     </form>

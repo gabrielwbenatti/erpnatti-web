@@ -10,7 +10,7 @@ import { useRouter } from "next/navigation";
 export default function ProductsCreatePage() {
   const router = useRouter();
 
-  const [product, setProdict] = useState<Product>({
+  const [product, setProduct] = useState<Product>({
     movimenta_estoque: true,
     nome: "",
     status: true,
@@ -33,9 +33,9 @@ export default function ProductsCreatePage() {
 
         <ProductsFormComp
           initialData={product}
-          handleSubmit={handleSubmit}
-          handleCancel={handleCancel}
-          onProductChange={setProdict}
+          onChangeData={setProduct}
+          onSubmit={handleSubmit}
+          onCancel={handleCancel}
         />
       </MainWrapperComp>
     </div>

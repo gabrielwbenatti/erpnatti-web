@@ -1,4 +1,3 @@
-import HomeAsidePanelComponent from "../components/home/home.aside.panel";
 import HomeGridComponent from "../components/home/home.grid";
 import HomeNavComponent from "../components/home/home.nav";
 
@@ -15,7 +14,7 @@ export default function HomePage() {
     { id: 1, caption: "Pessoas", route: "/pessoas" },
     { id: 2, caption: "Orçamentos" },
     { id: 3, caption: "Pedidos de Venda" },
-    { id: 4, caption: "Nota Fiscal Eletrôncia", route: "/nfe" },
+    { id: 4, caption: "Nota Fiscal Eletrôncia" },
     { id: 5, caption: "Títulos a Receber" },
     { id: 6, caption: "Produtos", route: "/products" },
     { id: 8, caption: "Pedidos de Compra" },
@@ -30,10 +29,6 @@ export default function HomePage() {
       </nav>
 
       <div className="flex h-full">
-        <aside className="md:w-3/12 xl:w-2/12">
-          <HomeAsidePanelComponent />
-        </aside>
-
         <main className="md:w-9/12 xl:w-10/12">
           <HomeGridComponent atalhos={atalhos} />
         </main>

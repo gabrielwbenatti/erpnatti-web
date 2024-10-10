@@ -1,28 +1,21 @@
 import { Product } from "@/models/Product";
+import { FormProps } from "@/types/FormProps";
 import { Button } from "@nextui-org/button";
 import { Checkbox } from "@nextui-org/checkbox";
 import { Input } from "@nextui-org/input";
 import { ChangeEvent, useEffect, useState } from "react";
 
-export interface ProductsFormComp {
-  initialData: Product;
-  onProductChange: (product: Product) => void;
-  handleSubmit?: () => void;
-  handleCancel?: () => void;
-  handleDelete?: () => void;
-}
-
 export default function ProductsFormComp({
   initialData,
-  onProductChange,
-  handleSubmit,
-  handleCancel,
-  handleDelete,
-}: ProductsFormComp) {
+  onChangeData,
+  onSubmit,
+  onCancel,
+  onDelete,
+}: FormProps<Product>) {
   const [product, setProduct] = useState<Product>(initialData);
 
   useEffect(() => {
-    onProductChange(product);
+    onChangeData(product);
   }, [product]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -44,7 +37,7 @@ export default function ProductsFormComp({
         />
         <Input
           label="Código de Barras"
-          name="codigo_barras"
+          name="codigo_barra"
           value={product.codigo_barra || ""}
           onChange={handleInputChange}
           autoComplete="off"
@@ -71,18 +64,13 @@ export default function ProductsFormComp({
       </div>
 
       <div className="flex">
-        <Button type="button" variant="solid" onClick={handleSubmit}>
+        <Button type="button" variant="solid" onClick={onSubmit}>
           Salvar
         </Button>
-        <Button type="button" variant="light" onClick={handleCancel}>
+        <Button type="button" variant="light" onClick={onCancel}>
           Cancelar
         </Button>
-        <Button
-          type="button"
-          variant="light"
-          color="danger"
-          onClick={handleDelete}
-        >
+        <Button type="button" variant="light" color="danger" onClick={onDelete}>
           Excluir
         </Button>
       </div>

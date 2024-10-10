@@ -8,7 +8,6 @@ const HomeGridItem = ({ item }: { item: HomeGridComponentProp }) => (
   <a href={item.route ? item.route : "#"}>
     <div className="box-border rounded-lg border-2 border-transparent hover:border-2 hover:border-light-on-primary-container">
       <div className="flex h-48 select-none flex-col items-center justify-center gap-6 rounded-lg bg-light-surface-container p-4 text-center">
-        <span className="text-3xl">😁</span>
         <span className="font-semibold uppercase text-light-on-primary-container">
           {item.caption}
         </span>
@@ -25,11 +24,14 @@ export default function HomeGridComponent({
   return (
     <div className="mx-4 mt-6 sm:mx-4 md:mx-6">
       <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        {atalhos.map((atalho) => (
-          <li key={atalho.id}>
-            <HomeGridItem item={atalho} key={atalho.id} />
-          </li>
-        ))}
+        {atalhos.map(
+          (atalho) =>
+            atalho.route && (
+              <li key={atalho.id}>
+                <HomeGridItem item={atalho} key={atalho.id} />
+              </li>
+            ),
+        )}
       </ul>
     </div>
   );
