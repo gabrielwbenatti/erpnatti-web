@@ -13,6 +13,7 @@ import {
   ModalHeader,
   useDisclosure,
 } from "@nextui-org/modal";
+import PurchasesItemsFormComp from "./purchases.items.form";
 
 export default function PurchasesFormComp({
   initialData,
@@ -79,23 +80,25 @@ export default function PurchasesFormComp({
           className="md:col-span-4"
           onClick={onOpen}
         />
-
-        <Modal
-          isOpen={isOpen}
-          onOpenChange={onOpenChange}
-          scrollBehavior="inside"
-        >
-          <ModalContent>
-            <ModalHeader>Selecione o Fornecedor</ModalHeader>
-            <ModalBody>
-              <Input
-                label="Busque por Razão Social, Nome Fantasia ou CNPJ"
-                size="sm"
-              />
-            </ModalBody>
-          </ModalContent>
-        </Modal>
       </div>
+
+      <PurchasesItemsFormComp />
+
+      <Modal
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+        scrollBehavior="inside"
+      >
+        <ModalContent>
+          <ModalHeader>Selecione o Fornecedor</ModalHeader>
+          <ModalBody>
+            <Input
+              label="Busque por Razão Social, Nome Fantasia ou CNPJ"
+              size="sm"
+            />
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </form>
   );
 }
