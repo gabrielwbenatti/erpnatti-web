@@ -13,7 +13,7 @@ export default function ProductsPage() {
   useEffect(() => {
     async function fetchData() {
       const res = await productService.index();
-      setProducts(res.data.data);
+      setProducts(res.data.result);
     }
 
     fetchData();

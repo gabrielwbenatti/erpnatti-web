@@ -1,9 +1,9 @@
 export interface Pessoa {
   id?: number;
-  razao_social: string;
+  razao_social?: string;
   nome_fantasia?: string;
-  cpf_cnpj: string;
-  tipo_pessoa: string[];
+  cpf_cnpj?: string;
+  tipo_pessoa?: string[];
 
   cep?: string;
   endereco?: string;

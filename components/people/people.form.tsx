@@ -43,8 +43,8 @@ export default function PeopleFormComp({
 
   return (
     <form className="md:space-y-3">
-      <span className="md:col-span-4 md:mt-3 md:text-small">Cadastral</span>
       <div className="md:grid md:grid-cols-4 md:gap-3">
+        <span className="md:col-span-4 md:mt-3 md:text-small">Cadastral</span>
         <Input
           label="Razão Social"
           required
@@ -90,7 +90,7 @@ export default function PeopleFormComp({
         <span className="md:col-span-4 md:mt-3 md:text-small">Endereço</span>
         <Input
           label="CEP"
-          name="cep" 
+          name="cep"
           value={person.cep || ""}
           onChange={handleInputChange}
           autoComplete="off"
@@ -123,7 +123,7 @@ export default function PeopleFormComp({
       </div>
 
       <div className="flex">
-        <Button variant="solid" type="button"  onClick={onSubmit}>
+        <Button variant="solid" type="button" onClick={onSubmit}>
           Salvar
         </Button>
         <Button variant="light" type="button" onClick={onCancel}>

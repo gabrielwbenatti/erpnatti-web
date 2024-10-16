@@ -236,6 +236,33 @@
     "@react-types/button" "3.9.4"
     "@react-types/shared" "3.23.1"
 
+"@nextui-org/calendar@2.0.12":
+  version "2.0.12"
+  resolved "https://registry.yarnpkg.com/@nextui-org/calendar/-/calendar-2.0.12.tgz#e3e5df719cd08b710a51602d279a25d737b3c5b2"
+  integrity sha512-FnEnOQnsuyN+F+hy4LEJBvZZcfXMpDGgLkTdnDdoZObXQWwd0PWPjU8GzY+ukhhR5eiU7QIj2AADVRCvuAkiLA==
+  dependencies:
+    "@internationalized/date" "^3.5.4"
+    "@nextui-org/button" "2.0.38"
+    "@nextui-org/framer-utils" "2.0.25"
+    "@nextui-org/react-utils" "2.0.17"
+    "@nextui-org/shared-icons" "2.0.9"
+    "@nextui-org/shared-utils" "2.0.8"
+    "@nextui-org/use-aria-button" "2.0.10"
+    "@react-aria/calendar" "3.5.8"
+    "@react-aria/focus" "3.17.1"
+    "@react-aria/i18n" "3.11.1"
+    "@react-aria/interactions" "3.21.3"
+    "@react-aria/utils" "3.24.1"
+    "@react-aria/visually-hidden" "3.8.12"
+    "@react-stately/calendar" "3.5.1"
+    "@react-stately/utils" "3.10.1"
+    "@react-types/button" "3.9.4"
+    "@react-types/calendar" "3.4.6"
+    "@react-types/shared" "3.23.1"
+    "@types/lodash.debounce" "^4.0.7"
+    lodash.debounce "^4.0.8"
+    scroll-into-view-if-needed "3.0.10"
+
 "@nextui-org/checkbox@2.1.5", "@nextui-org/checkbox@^2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nextui-org/checkbox/-/checkbox-2.1.5.tgz#6b3083b7b53cf8a6e3c20e6063ca21a66866432e"
@@ -253,6 +280,44 @@
     "@react-stately/checkbox" "3.6.5"
     "@react-stately/toggle" "3.7.4"
     "@react-types/checkbox" "3.8.1"
+    "@react-types/shared" "3.23.1"
+
+"@nextui-org/date-input@2.1.4":
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/@nextui-org/date-input/-/date-input-2.1.4.tgz#7705694ad313420b9b9d9a9574cacd9a143ac33a"
+  integrity sha512-U8Pbe7EhMp9VTfFxB/32+A9N9cJJWswebIz1qpaPy0Hmr92AHS3c1qVTcspkop6wbIM8AnHWEST0QkR95IXPDA==
+  dependencies:
+    "@internationalized/date" "^3.5.4"
+    "@nextui-org/react-utils" "2.0.17"
+    "@nextui-org/shared-utils" "2.0.8"
+    "@react-aria/datepicker" "3.10.1"
+    "@react-aria/i18n" "3.11.1"
+    "@react-aria/utils" "3.24.1"
+    "@react-stately/datepicker" "3.9.4"
+    "@react-types/datepicker" "3.7.4"
+    "@react-types/shared" "3.23.1"
+
+"@nextui-org/date-picker@^2.1.8":
+  version "2.1.8"
+  resolved "https://registry.yarnpkg.com/@nextui-org/date-picker/-/date-picker-2.1.8.tgz#6a3c343e9f34e6e0197d441dcd67b4c3496302b7"
+  integrity sha512-pokAFcrf6AdM53QHf1EzvqVhj8imQRZHWitK9eZPtIdGzJzx28dW0ir7ID0lQFMiNNIQTesSpBLzedTawbcJrg==
+  dependencies:
+    "@internationalized/date" "^3.5.4"
+    "@nextui-org/aria-utils" "2.0.26"
+    "@nextui-org/button" "2.0.38"
+    "@nextui-org/calendar" "2.0.12"
+    "@nextui-org/date-input" "2.1.4"
+    "@nextui-org/popover" "2.1.29"
+    "@nextui-org/react-utils" "2.0.17"
+    "@nextui-org/shared-icons" "2.0.9"
+    "@nextui-org/shared-utils" "2.0.8"
+    "@react-aria/datepicker" "3.10.1"
+    "@react-aria/i18n" "3.11.1"
+    "@react-aria/utils" "3.24.1"
+    "@react-stately/datepicker" "3.9.4"
+    "@react-stately/overlays" "3.6.7"
+    "@react-stately/utils" "3.10.1"
+    "@react-types/datepicker" "3.7.4"
     "@react-types/shared" "3.23.1"
 
 "@nextui-org/divider@2.0.32", "@nextui-org/divider@^2.0.32":
@@ -309,6 +374,26 @@
     "@react-stately/list" "3.10.5"
     "@react-types/menu" "3.9.9"
     "@react-types/shared" "3.23.1"
+
+"@nextui-org/modal@^2.0.41":
+  version "2.0.41"
+  resolved "https://registry.yarnpkg.com/@nextui-org/modal/-/modal-2.0.41.tgz#3fba82661413236e9b41f3b4d6c50c3205d6292c"
+  integrity sha512-Sirn319xAf7E4cZqvQ0o0Vd3Xqy0FRSuhOTwp8dALMGTMY61c2nIyurgVCNP6hh8dMvMT7zQEPP9/LE0boFCEQ==
+  dependencies:
+    "@nextui-org/framer-utils" "2.0.25"
+    "@nextui-org/react-utils" "2.0.17"
+    "@nextui-org/shared-icons" "2.0.9"
+    "@nextui-org/shared-utils" "2.0.8"
+    "@nextui-org/use-aria-button" "2.0.10"
+    "@nextui-org/use-aria-modal-overlay" "2.0.13"
+    "@nextui-org/use-disclosure" "2.0.10"
+    "@react-aria/dialog" "3.5.14"
+    "@react-aria/focus" "3.17.1"
+    "@react-aria/interactions" "3.21.3"
+    "@react-aria/overlays" "3.22.1"
+    "@react-aria/utils" "3.24.1"
+    "@react-stately/overlays" "3.6.7"
+    "@react-types/overlays" "3.8.7"
 
 "@nextui-org/navbar@^2.0.37":
   version "2.0.37"
@@ -501,6 +586,16 @@
     "@react-types/button" "3.9.4"
     "@react-types/shared" "3.23.1"
 
+"@nextui-org/use-aria-modal-overlay@2.0.13":
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/@nextui-org/use-aria-modal-overlay/-/use-aria-modal-overlay-2.0.13.tgz#2a505635f562fae12e1d94b39c263365b534b907"
+  integrity sha512-ifQxJwTX72lhVUofEVQqMbpe9vEUiCIqiimzlUjeVuE0cYOXaoJLEgPozHpYQrdjTNiwD5On0LLMRgz19XyAqw==
+  dependencies:
+    "@react-aria/overlays" "3.22.1"
+    "@react-aria/utils" "3.24.1"
+    "@react-stately/overlays" "3.6.7"
+    "@react-types/shared" "3.23.1"
+
 "@nextui-org/use-aria-multiselect@2.2.5":
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/@nextui-org/use-aria-multiselect/-/use-aria-multiselect-2.2.5.tgz#81e4783cb6971d2369566ca93f752ce3a4d7dbc4"
@@ -545,6 +640,15 @@
   integrity sha512-MP4YLjBWyIt0KyWPndXyhnkKgOLqTZ2aPY82Czjqn+eZk/l8BNo0nfA+dZFfbfEuPJgqdt/JDkMOrS+uq0+vkQ==
   dependencies:
     "@nextui-org/shared-utils" "2.0.8"
+
+"@nextui-org/use-disclosure@2.0.10":
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/@nextui-org/use-disclosure/-/use-disclosure-2.0.10.tgz#9767ad6156fef3353a5bfb84207724f56456c850"
+  integrity sha512-s2I58d7x2f1JRriZnNm9ZoxrGmxF+DnC9BXM1sD99Wq1VNMd0dhitmx0mUWfUB7l5HLyZgKOeiSLG+ugy1F1Yw==
+  dependencies:
+    "@nextui-org/use-callback-ref" "2.0.6"
+    "@react-aria/utils" "3.24.1"
+    "@react-stately/utils" "3.10.1"
 
 "@nextui-org/use-is-mobile@2.0.9":
   version "2.0.9"
@@ -607,6 +711,22 @@
     "@react-types/shared" "^3.23.1"
     "@swc/helpers" "^0.5.0"
 
+"@react-aria/calendar@3.5.8":
+  version "3.5.8"
+  resolved "https://registry.yarnpkg.com/@react-aria/calendar/-/calendar-3.5.8.tgz#fd0858b34c8961b76957e9ac13b514f485c329a3"
+  integrity sha512-Whlp4CeAA5/ZkzrAHUv73kgIRYjw088eYGSc+cvSOCxfrc/2XkBm9rNrnSBv0DvhJ8AG0Fjz3vYakTmF3BgZBw==
+  dependencies:
+    "@internationalized/date" "^3.5.4"
+    "@react-aria/i18n" "^3.11.1"
+    "@react-aria/interactions" "^3.21.3"
+    "@react-aria/live-announcer" "^3.3.4"
+    "@react-aria/utils" "^3.24.1"
+    "@react-stately/calendar" "^3.5.1"
+    "@react-types/button" "^3.9.4"
+    "@react-types/calendar" "^3.4.6"
+    "@react-types/shared" "^3.23.1"
+    "@swc/helpers" "^0.5.0"
+
 "@react-aria/checkbox@3.14.3":
   version "3.14.3"
   resolved "https://registry.yarnpkg.com/@react-aria/checkbox/-/checkbox-3.14.3.tgz#6e2579681008e460d2c764a03f1f1b54e0815868"
@@ -621,6 +741,30 @@
     "@react-stately/form" "^3.0.3"
     "@react-stately/toggle" "^3.7.4"
     "@react-types/checkbox" "^3.8.1"
+    "@react-types/shared" "^3.23.1"
+    "@swc/helpers" "^0.5.0"
+
+"@react-aria/datepicker@3.10.1":
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/@react-aria/datepicker/-/datepicker-3.10.1.tgz#513a9d18e118d4c3d078fdbfc45dca76b7eeb37f"
+  integrity sha512-4HZL593nrNMa1GjBmWEN/OTvNS6d3/16G1YJWlqiUlv11ADulSbqBIjMmkgwrJVFcjrgqtXFy+yyrTA/oq94Zw==
+  dependencies:
+    "@internationalized/date" "^3.5.4"
+    "@internationalized/number" "^3.5.3"
+    "@internationalized/string" "^3.2.3"
+    "@react-aria/focus" "^3.17.1"
+    "@react-aria/form" "^3.0.5"
+    "@react-aria/i18n" "^3.11.1"
+    "@react-aria/interactions" "^3.21.3"
+    "@react-aria/label" "^3.7.8"
+    "@react-aria/spinbutton" "^3.6.5"
+    "@react-aria/utils" "^3.24.1"
+    "@react-stately/datepicker" "^3.9.4"
+    "@react-stately/form" "^3.0.3"
+    "@react-types/button" "^3.9.4"
+    "@react-types/calendar" "^3.4.6"
+    "@react-types/datepicker" "^3.7.4"
+    "@react-types/dialog" "^3.5.10"
     "@react-types/shared" "^3.23.1"
     "@swc/helpers" "^0.5.0"
 
@@ -822,6 +966,13 @@
   dependencies:
     "@swc/helpers" "^0.5.0"
 
+"@react-aria/live-announcer@^3.4.0":
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/@react-aria/live-announcer/-/live-announcer-3.4.0.tgz#0ad90fddc4731e93071d802c8cec9e1dfd2fc448"
+  integrity sha512-VBxEdMq2SbtRbNTQNcDR2G6E3lEl5cJSBiHTTO8Ln1AL76LiazrylIXGgoktqzCfRQmyq0v8CHk1cNKDU9mvJg==
+  dependencies:
+    "@swc/helpers" "^0.5.0"
+
 "@react-aria/menu@3.14.1":
   version "3.14.1"
   resolved "https://registry.yarnpkg.com/@react-aria/menu/-/menu-3.14.1.tgz#c9ec25bc374ee9bb02dc3d92d8260df702349133"
@@ -912,6 +1063,18 @@
     "@react-aria/utils" "^3.25.2"
     "@react-stately/selection" "^3.16.2"
     "@react-types/shared" "^3.24.1"
+    "@swc/helpers" "^0.5.0"
+
+"@react-aria/spinbutton@^3.6.5":
+  version "3.6.9"
+  resolved "https://registry.yarnpkg.com/@react-aria/spinbutton/-/spinbutton-3.6.9.tgz#9a74c0ec927d0a7949463efcddb5c52fc9841fa8"
+  integrity sha512-m+uVJdiIc2LrLVDGjU7p8P2O2gUvTN26GR+NgH4rl+tUSuAB0+T1rjls/C+oXEqQjCpQihEB9Bt4M+VHpzmyjA==
+  dependencies:
+    "@react-aria/i18n" "^3.12.3"
+    "@react-aria/live-announcer" "^3.4.0"
+    "@react-aria/utils" "^3.25.3"
+    "@react-types/button" "^3.10.0"
+    "@react-types/shared" "^3.25.0"
     "@swc/helpers" "^0.5.0"
 
 "@react-aria/ssr@3.9.4":
@@ -1048,6 +1211,28 @@
     "@react-types/shared" "^3.25.0"
     "@swc/helpers" "^0.5.0"
 
+"@react-stately/calendar@3.5.1":
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/@react-stately/calendar/-/calendar-3.5.1.tgz#3e865d69675ba78f56e7abfadff0ef667f438a69"
+  integrity sha512-7l7QhqGUJ5AzWHfvZzbTe3J4t72Ht5BmhW4hlVI7flQXtfrmYkVtl3ZdytEZkkHmWGYZRW9b4IQTQGZxhtlElA==
+  dependencies:
+    "@internationalized/date" "^3.5.4"
+    "@react-stately/utils" "^3.10.1"
+    "@react-types/calendar" "^3.4.6"
+    "@react-types/shared" "^3.23.1"
+    "@swc/helpers" "^0.5.0"
+
+"@react-stately/calendar@^3.5.1":
+  version "3.5.5"
+  resolved "https://registry.yarnpkg.com/@react-stately/calendar/-/calendar-3.5.5.tgz#52249991e1e9c40921cd3d6dce727c0dd37536cb"
+  integrity sha512-HzaiDRhrmaYIly8hRsjjIrydLkldiw1Ws6T/130NLQOt+VPwRW/x0R+nil42mA9LZ6oV0XN0NpmG5tn7TaKRGw==
+  dependencies:
+    "@internationalized/date" "^3.5.6"
+    "@react-stately/utils" "^3.10.4"
+    "@react-types/calendar" "^3.4.10"
+    "@react-types/shared" "^3.25.0"
+    "@swc/helpers" "^0.5.0"
+
 "@react-stately/checkbox@3.6.5":
   version "3.6.5"
   resolved "https://registry.yarnpkg.com/@react-stately/checkbox/-/checkbox-3.6.5.tgz#0566eae3ba3a84af6f29526b3feaf124d3c3a66b"
@@ -1094,6 +1279,34 @@
     "@react-types/shared" "^3.25.0"
     "@swc/helpers" "^0.5.0"
 
+"@react-stately/datepicker@3.9.4":
+  version "3.9.4"
+  resolved "https://registry.yarnpkg.com/@react-stately/datepicker/-/datepicker-3.9.4.tgz#c9862cdc09da72760ed3005169223c7743b44b2d"
+  integrity sha512-yBdX01jn6gq4NIVvHIqdjBUPo+WN8Bujc4OnPw+ZnfA4jI0eIgq04pfZ84cp1LVXW0IB0VaCu1AlQ/kvtZjfGA==
+  dependencies:
+    "@internationalized/date" "^3.5.4"
+    "@internationalized/string" "^3.2.3"
+    "@react-stately/form" "^3.0.3"
+    "@react-stately/overlays" "^3.6.7"
+    "@react-stately/utils" "^3.10.1"
+    "@react-types/datepicker" "^3.7.4"
+    "@react-types/shared" "^3.23.1"
+    "@swc/helpers" "^0.5.0"
+
+"@react-stately/datepicker@^3.9.4":
+  version "3.10.3"
+  resolved "https://registry.yarnpkg.com/@react-stately/datepicker/-/datepicker-3.10.3.tgz#4c7ea07cc1e0d145c8ce1ad406ca44470e654c4c"
+  integrity sha512-6PJW1QMwk6BQMktV9L6DA4f2rfAdLfbq3iTNLy4qxd5IfNPLMUZiJGGTj+cuqx0WcEl+q5irp+YhKBpbmhPZHg==
+  dependencies:
+    "@internationalized/date" "^3.5.6"
+    "@internationalized/string" "^3.2.4"
+    "@react-stately/form" "^3.0.6"
+    "@react-stately/overlays" "^3.6.11"
+    "@react-stately/utils" "^3.10.4"
+    "@react-types/datepicker" "^3.8.3"
+    "@react-types/shared" "^3.25.0"
+    "@swc/helpers" "^0.5.0"
+
 "@react-stately/flags@^3.0.3":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@react-stately/flags/-/flags-3.0.3.tgz#53a58c0140d61575787127a762b7901b4a7fa896"
@@ -1115,6 +1328,14 @@
   integrity sha512-J3plwJ63HQz109OdmaTqTA8Qhvl3gcYYK7DtgKyNP6mc/Me2Q4tl2avkWoA+22NRuv5m+J8TpBk4AVHUEOwqeQ==
   dependencies:
     "@react-types/shared" "^3.24.1"
+    "@swc/helpers" "^0.5.0"
+
+"@react-stately/form@^3.0.6":
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/@react-stately/form/-/form-3.0.6.tgz#788c837a7967a499366928a91738b15dd7f87d77"
+  integrity sha512-KMsxm3/V0iCv/6ikt4JEjVM3LW2AgCzo7aNotMzRobtwIo0RwaUo7DQNY00rGgFQ3/IjzI6DcVo13D+AVE/zXg==
+  dependencies:
+    "@react-types/shared" "^3.25.0"
     "@swc/helpers" "^0.5.0"
 
 "@react-stately/grid@^3.8.7", "@react-stately/grid@^3.9.2":
@@ -1327,6 +1548,22 @@
   dependencies:
     "@react-types/shared" "^3.24.1"
 
+"@react-types/calendar@3.4.6":
+  version "3.4.6"
+  resolved "https://registry.yarnpkg.com/@react-types/calendar/-/calendar-3.4.6.tgz#66ddcefc3058492b3cce58a6e63b01558048b669"
+  integrity sha512-WSntZPwtvsIYWvBQRAPvuCn55UTJBZroTvX0vQvWykJRQnPAI20G1hMQ3dNsnAL+gLZUYxBXn66vphmjUuSYew==
+  dependencies:
+    "@internationalized/date" "^3.5.4"
+    "@react-types/shared" "^3.23.1"
+
+"@react-types/calendar@^3.4.10", "@react-types/calendar@^3.4.6":
+  version "3.4.10"
+  resolved "https://registry.yarnpkg.com/@react-types/calendar/-/calendar-3.4.10.tgz#65011c31fb497e25bd98d19c84da3b8d63d5a3aa"
+  integrity sha512-PyjqxwJxSW2IpQx6y0D9O34fRCWn1gv9q0qFhgaIigIQrPg8zTE/CC7owHLxAtgCnnCt8exJ5rqi414csaHKlA==
+  dependencies:
+    "@internationalized/date" "^3.5.6"
+    "@react-types/shared" "^3.25.0"
+
 "@react-types/checkbox@3.8.1":
   version "3.8.1"
   resolved "https://registry.yarnpkg.com/@react-types/checkbox/-/checkbox-3.8.1.tgz#de82c93542b2dd85c01df2e0c85c33a2e6349d14"
@@ -1340,6 +1577,26 @@
   integrity sha512-f4c1mnLEt0iS1NMkyZXgT3q3AgcxzDk7w6MSONOKydcnh0xG5L2oefY14DhVDLkAuQS7jThlUFwiAs+MxiO3MA==
   dependencies:
     "@react-types/shared" "^3.24.1"
+
+"@react-types/datepicker@3.7.4":
+  version "3.7.4"
+  resolved "https://registry.yarnpkg.com/@react-types/datepicker/-/datepicker-3.7.4.tgz#8b21df1041d7e51198621984920ac290b2f09744"
+  integrity sha512-ZfvgscvNzBJpYyVWg3nstJtA/VlWLwErwSkd1ivZYam859N30w8yH+4qoYLa6FzWLCFlrsRHyvtxlEM7lUAt5A==
+  dependencies:
+    "@internationalized/date" "^3.5.4"
+    "@react-types/calendar" "^3.4.6"
+    "@react-types/overlays" "^3.8.7"
+    "@react-types/shared" "^3.23.1"
+
+"@react-types/datepicker@^3.7.4", "@react-types/datepicker@^3.8.3":
+  version "3.8.3"
+  resolved "https://registry.yarnpkg.com/@react-types/datepicker/-/datepicker-3.8.3.tgz#3d54003a92c3a37f35309373ddbb9c663135b631"
+  integrity sha512-Y4qfPRBB6uzocosCOWSYMuwiZ3YXwLWQYiFB4KCglkvHyltbNz76LgoBEnclYA5HjwosIk4XywiXvHSYry8JnQ==
+  dependencies:
+    "@internationalized/date" "^3.5.6"
+    "@react-types/calendar" "^3.4.10"
+    "@react-types/overlays" "^3.8.10"
+    "@react-types/shared" "^3.25.0"
 
 "@react-types/dialog@^3.5.10":
   version "3.5.13"
@@ -1485,6 +1742,18 @@
   integrity sha512-KqQnQbdYE54D7oa/UmYVMZKq7CO4l8DEENzOKc4aBRwxCXSlJXGz83flFx5L7AWrOQnmuN3kVsRdt+GZPPjiVQ==
   dependencies:
     axios "*"
+
+"@types/lodash.debounce@^4.0.7":
+  version "4.0.9"
+  resolved "https://registry.yarnpkg.com/@types/lodash.debounce/-/lodash.debounce-4.0.9.tgz#0f5f21c507bce7521b5e30e7a24440975ac860a5"
+  integrity sha512-Ma5JcgTREwpLRwMM+XwBR7DaWe96nC38uCBDFKZWbNKD+osjVzdpnUSwBcqCptrp16sSOLBAUb50Car5I0TCsQ==
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*":
+  version "4.17.10"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.17.10.tgz#64f3edf656af2fe59e7278b73d3e62404144a6e6"
+  integrity sha512-YpS0zzoduEhuOWjAotS6A5AVCva7X4lVlYLF0FYHAY9sdraBfnatttHItlWeZdGhuEkf+OzMNg2ZYAx8t+52uQ==
 
 "@types/node@^20":
   version "20.16.9"
@@ -1682,6 +1951,11 @@ commander@^4.0.0:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/commander/-/commander-4.1.1.tgz#9fd602bd936294e9e9ef46a3f4d6964044b18068"
   integrity sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==
+
+compute-scroll-into-view@^3.0.2:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/compute-scroll-into-view/-/compute-scroll-into-view-3.1.0.tgz#753f11d972596558d8fe7c6bcbc8497690ab4c87"
+  integrity sha512-rj8l8pD4bJ1nx+dAkMhV1xB5RuZEyVysfxJqB1pRchh1KVvwOv9b7CGB8ZfjTImVv2oF+sYMUkMZq6Na5Ftmbg==
 
 cross-spawn@^7.0.0:
   version "7.0.3"
@@ -1950,6 +2224,11 @@ lines-and-columns@^1.1.6:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/lines-and-columns/-/lines-and-columns-1.2.4.tgz#eca284f75d2965079309dc0ad9255abb2ebc1632"
   integrity sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==
+
+lodash.debounce@^4.0.8:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+  integrity sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==
 
 lodash.foreach@^4.5.0:
   version "4.5.0"
@@ -2300,6 +2579,13 @@ scheduler@^0.23.2:
   integrity sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==
   dependencies:
     loose-envify "^1.1.0"
+
+scroll-into-view-if-needed@3.0.10:
+  version "3.0.10"
+  resolved "https://registry.yarnpkg.com/scroll-into-view-if-needed/-/scroll-into-view-if-needed-3.0.10.tgz#38fbfe770d490baff0fb2ba34ae3539f6ec44e13"
+  integrity sha512-t44QCeDKAPf1mtQH3fYpWz8IM/DyvHLjs8wUvvwMYxk5moOqCzrMSxK6HQVD0QVmVjXFavoFIPRVrMuJPKAvtg==
+  dependencies:
+    compute-scroll-into-view "^3.0.2"
 
 shebang-command@^2.0.0:
   version "2.0.0"

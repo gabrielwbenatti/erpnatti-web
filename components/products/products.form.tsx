@@ -79,9 +79,16 @@ export default function ProductsFormComp({
         <Button type="button" variant="light" onClick={onCancel}>
           Cancelar
         </Button>
-        <Button type="button" variant="light" color="danger" onClick={onDelete}>
-          Excluir
-        </Button>
+        {product.id && (
+          <Button
+            type="button"
+            variant="light"
+            color="danger"
+            onClick={onDelete}
+          >
+            Excluir
+          </Button>
+        )}
       </div>
     </form>
   );

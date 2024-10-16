@@ -13,7 +13,7 @@ export default function PessoasPage() {
   useEffect(() => {
     async function fetchData() {
       const res = await peopleServices.index();
-      setPeople(res.data.data);
+      setPeople(res.data.result);
     }
 
     fetchData();

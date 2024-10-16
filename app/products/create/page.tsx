@@ -6,19 +6,19 @@ import * as productService from "@/services/productService";
 import { Product } from "@/models/Product";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { HttpStatusCode } from "axios";
 
 export default function ProductsCreatePage() {
   const router = useRouter();
 
   const [product, setProduct] = useState<Product>({
     movimenta_estoque: true,
-    nome: "",
     status: true,
   });
 
   const handleSubmit = async () => {
     await productService.store(product).then((res) => {
-      if (res.status === 201) {
+      if (res.status === HttpStatusCode.Created) {
         router.push("/products");
       }
     });

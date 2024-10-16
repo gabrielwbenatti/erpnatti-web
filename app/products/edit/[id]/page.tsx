@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import ProductsFormComp from "../../../../components/products/products.form";
 import * as productService from "@/services/productService";
 import { useRouter } from "next/navigation";
+import { HttpStatusCode } from "axios";
 
 interface ProductsEditPageProps {
   params: { id: string };
@@ -17,10 +18,12 @@ export default function ProductsEditPage({ params }: ProductsEditPageProps) {
 
   useEffect(() => {
     async function fetchData() {
-      const res = await productService.show(+params.id);
-      setProduct(res.data.data);
-      setNome(res.data.data.nome);
+      await productService.show(+params.id).then((res) => {
+        setProduct(res.data.result);
+        setNome(res.data.result.nome || "<undefined>");
+      });
     }
+
     fetchData();
   }, [params.id]);
 
@@ -28,7 +31,7 @@ export default function ProductsEditPage({ params }: ProductsEditPageProps) {
     if (!product) return;
 
     await productService.update(product).then((res) => {
-      if (res.status === 202) {
+      if (res.status === HttpStatusCode.Ok) {
         router.push("/products");
       }
     });
@@ -38,7 +41,7 @@ export default function ProductsEditPage({ params }: ProductsEditPageProps) {
 
   const handleDelete = async () => {
     await productService.remove(+params.id).then((res) => {
-      if (res.status === 202) {
+      if (res.status === HttpStatusCode.Ok) {
         router.push("/products");
       }
     });

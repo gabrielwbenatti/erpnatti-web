@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import * as peopleServices from "@/services/peopleService";
 import PeopleFormComp from "../../../../components/people/people.form";
 import { useRouter } from "next/navigation";
+import { HttpStatusCode } from "axios";
 
 export default function PessoasEditPage({
   params,
@@ -18,9 +19,10 @@ export default function PessoasEditPage({
 
   useEffect(() => {
     async function fetchData() {
-      const res = await peopleServices.show(+params.id);
-      setPerson(res.data.data);
-      setRazaoSocial(res.data.data.razao_social);
+      await peopleServices.show(+params.id).then((res) => {
+        setPerson(res.data.result);
+        setRazaoSocial(res.data.result.razao_social || "<undefined>");
+      });
     }
 
     fetchData();
@@ -32,7 +34,7 @@ export default function PessoasEditPage({
     if (!person) return;
 
     await peopleServices.update(person).then((res) => {
-      if (res.status === 200) {
+      if (res.status === HttpStatusCode.Ok) {
         router.push("/pessoas");
       }
     });

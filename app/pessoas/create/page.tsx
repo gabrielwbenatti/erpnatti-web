@@ -10,11 +10,7 @@ import { useState } from "react";
 export default function PessoasNovoPage() {
   const router = useRouter();
 
-  const [person, setPerson] = useState<Pessoa>({
-    cpf_cnpj: "",
-    razao_social: "",
-    tipo_pessoa: [],
-  });
+  const [person, setPerson] = useState<Pessoa>({});
 
   const handleChangeData = (person: Pessoa) => setPerson(person);
 
