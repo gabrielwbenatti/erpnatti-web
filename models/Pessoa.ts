@@ -7,8 +7,10 @@ export interface Pessoa {
 
   cep?: string;
   endereco?: string;
+  cidade?: string;
   bairro?: string;
   numero?: string;
+  codigo_ibge?: number;
   complemento?: string;
   ponto_referencia?: string;
 

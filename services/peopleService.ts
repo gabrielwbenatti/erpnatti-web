@@ -1,5 +1,5 @@
 import { Pessoa } from "@/models/Pessoa";
-import api from "./api";
+import { api } from "./api";
 import { ApiResponse } from "@/types/ApiResponse";
 
 const index = async () => {

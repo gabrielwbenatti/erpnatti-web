@@ -1,11 +1,14 @@
 "use client";
 
 import { Pessoa } from "@/models/Pessoa";
+import { viaCepApi } from "@/services/api";
 import { FormProps } from "@/types/FormProps";
 import { Button } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
 import { Select, SelectItem } from "@nextui-org/select";
 import { SharedSelection } from "@nextui-org/system";
+import { HttpStatusCode } from "axios";
+import { Search } from "lucide-react";
 import { ChangeEvent, useEffect, useState } from "react";
 
 const TYPES_LIST: { key: string; label: string }[] = [
@@ -35,6 +38,24 @@ export default function PeopleFormComp({
       : Array.from(keys as Set<string>);
 
     setPerson((prev) => ({ ...prev, tipo_pessoa: selectedValues }));
+  };
+
+  const fetchCep = (cep: string) => {
+    async function fetchData() {
+      await viaCepApi.get(`/${cep}/json`).then((res) => {
+        const body = res.data;
+        if (res.status === HttpStatusCode.Ok) {
+          setPerson((prev) => ({
+            ...prev,
+            endereco: body.logradouro,
+            bairro: body.bairro,
+            cidade: body.localidade,
+            codigo_ibge: body.ibge,
+          }));
+        }
+      });
+    }
+    fetchData();
   };
 
   useEffect(() => {
@@ -88,15 +109,18 @@ export default function PeopleFormComp({
         </Select>
 
         <span className="md:col-span-4 md:mt-3 md:text-small">Endereço</span>
+        <div className="flex items-center gap-2">
+          <Input
+            label="CEP"
+            name="cep"
+            value={person.cep || ""}
+            onChange={handleInputChange}
+            autoComplete="off"
+          />
+          <Button onClick={() => fetchCep(person.cep!)}>Buscar</Button>
+        </div>
         <Input
-          label="CEP"
-          name="cep"
-          value={person.cep || ""}
-          onChange={handleInputChange}
-          autoComplete="off"
-          className="md:col-span-1"
-        />
-        <Input
+          isDisabled
           label="Endereço"
           name="endereco"
           value={person.endereco || ""}
@@ -112,13 +136,32 @@ export default function PeopleFormComp({
           autoComplete="off"
           className="md:col-span-1"
         />
+
+        <Input
+          isDisabled
+          label="Bairro"
+          name="bairro"
+          value={person.bairro || ""}
+          onChange={handleInputChange}
+          autoComplete="off"
+          className="col-span-1"
+        />
+        <Input
+          isDisabled
+          label="Cidade"
+          name="cidade"
+          value={person.cidade || ""}
+          onChange={handleInputChange}
+          autoComplete="off"
+          className="col-span-1"
+        />
         <Input
           label="Complemento"
           name="complemento"
           value={person.complemento || ""}
           onChange={handleInputChange}
           autoComplete="off"
-          className="col-span-4"
+          className="col-span-2"
         />
       </div>
 

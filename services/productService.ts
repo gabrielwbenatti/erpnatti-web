@@ -1,9 +1,11 @@
 import { Product } from "@/models/Product";
-import api from "./api";
+import { api } from "./api";
 import { ApiResponse } from "@/types/ApiResponse";
 
-const index = async () => {
-  const response = await api.get<ApiResponse<Product[]>>("/products");
+const index = async (search?: any) => {
+  const response = await api.get<ApiResponse<Product[]>>("/products", {
+    params: search,
+  });
   return response;
 };
 
