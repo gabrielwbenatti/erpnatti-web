@@ -1,87 +1,108 @@
 import { Product } from "@/models/Product";
 import { Autocomplete, AutocompleteItem } from "@nextui-org/autocomplete";
-import { Button } from "@nextui-org/button";
+import { Button, ButtonGroup } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableColumn,
-  TableHeader,
-  TableRow,
-} from "@nextui-org/table";
 import * as productService from "@/services/productService";
 import { Trash2, Pencil } from "lucide-react";
-import { useEffect, useState } from "react";
-import { HttpStatusCode } from "axios";
+import { ChangeEvent, useState } from "react";
+import { FormProps } from "@/types/FormProps";
+import { PurchaseItem } from "@/models/PurchaseItem";
+import { useAsyncList } from "@react-stately/data";
 
-export default function PurchasesItemsFormComp() {
-  const [products, setProducts] = useState<Product[]>([]);
+export default function PurchasesItemsFormComp({
+  initialData = [],
+}: FormProps<PurchaseItem[]>) {
+  const [purchaseItems, setPurchaseItems] =
+    useState<PurchaseItem[]>(initialData);
 
-  const fetchProducts = (search: string) => {
-    async function fetchData() {
-      await productService.index(search).then((res) => {
-        if (res.status === HttpStatusCode.Ok) {
-          setProducts(res.data.result);
-        }
-      });
-    }
+  let list = useAsyncList<Product>({
+    async load({ filterText }) {
+      const res = await productService.index(filterText);
+      return { items: res.data.result };
+    },
+  });
 
-    if (search.length > 3) {
-      console.log("fetch");
-      fetchData();
-    }
+  const handleItemChange = (
+    index: number,
+    e: ChangeEvent<HTMLInputElement>,
+  ) => {
+    const { name, value } = e.target;
+    const fieldName = name as keyof PurchaseItem;
+    const newItems = [...purchaseItems];
+
+    if (typeof newItems[index][fieldName] === "number")
+      newItems[index][fieldName] = Number(value) as any;
+
+    if (typeof newItems[index][fieldName] === "string")
+      newItems[index][fieldName] = value as any;
+
+    setPurchaseItems(newItems);
+  };
+
+  const handleAddItem = () => {
+    setPurchaseItems([...purchaseItems, {}]);
+  };
+
+  const handleSubmit = () => {
+    console.log(purchaseItems);
   };
 
   return (
-    <div className="md:w-full">
-      <span className="md:col-span-4 md:mt-3 md:text-small">Itens</span>
+    <div className="space-y-3 md:w-full">
+      <span className="block md:col-span-4 md:mt-3 md:text-small">Itens</span>
 
-      <Table>
-        <TableHeader>
-          <TableColumn>Item</TableColumn>
-          <TableColumn>Qtde</TableColumn>
-          <TableColumn>R$ Unitário</TableColumn>
-          <TableColumn>R$ Total</TableColumn>
-          <TableColumn width={100}>Ações</TableColumn>
-        </TableHeader>
-        <TableBody>
-          <TableRow>
-            <TableCell key={1}>
-              <Autocomplete onChange={(e) => fetchProducts(e.target.value)}>
-                {products.map((product) => (
-                  <AutocompleteItem
-                    key={product.id!}
-                    value={product.id!}
-                    aria-labelledby={product.nome!}
-                  >
-                    {product.nome}
-                  </AutocompleteItem>
-                ))}
-              </Autocomplete>
-            </TableCell>
-            <TableCell key={2}>
-              <Input type="number" aria-labelledby="aaa" />
-            </TableCell>
-            <TableCell key={3}>
-              <Input type="number" aria-labelledby="aaa" startContent="R$" />
-            </TableCell>
-            <TableCell key={4}>
-              <Input type="number" aria-labelledby="aaa" startContent="R$" />
-            </TableCell>
-            <TableCell key={5}>
-              <div className="md:flex md:gap-2">
-                <Button isIconOnly color="danger">
-                  <Trash2 />
-                </Button>
-                <Button isIconOnly>
-                  <Pencil />
-                </Button>
-              </div>
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
+      {purchaseItems.map((item, index) => (
+        <div className="md:flex md:gap-3" key={index}>
+          <Autocomplete
+            size="sm"
+            label="Produto"
+            inputValue={list.filterText}
+            onInputChange={list.setFilterText}
+            isLoading={list.isLoading}
+            items={list.items}
+          >
+            {(it) => (
+              <AutocompleteItem key={it.id!} value={it.id!}>
+                {it.nome}
+              </AutocompleteItem>
+            )}
+          </Autocomplete>
+
+          <Input
+            size="sm"
+            name="quantidade"
+            label="Qtde"
+            type="number"
+            onChange={(e) => handleItemChange(index, e)}
+          />
+          <Input
+            size="sm"
+            label="R$ Unitário"
+            name="valor_unitario"
+            type="number"
+            onChange={(e) => handleItemChange(index, e)}
+          />
+          <Input
+            size="sm"
+            label="R$ Total"
+            name="valor_total"
+            type="number"
+            onChange={(e) => handleItemChange(index, e)}
+          />
+
+          <ButtonGroup>
+            <Button isIconOnly color="danger" variant="light">
+              <Trash2 />
+            </Button>
+            {/* <Button isIconOnly variant="light">
+              <Pencil />
+            </Button> */}
+          </ButtonGroup>
+        </div>
+      ))}
+
+      <Button onClick={handleAddItem}>Adicionar Novo Item</Button>
+      <Button onClick={handleSubmit}>Salvar</Button>
     </div>
   );
 }

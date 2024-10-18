@@ -1,4 +1,5 @@
 import { Pessoa } from "./Pessoa";
+import { PurchaseItem } from "./PurchaseItem";
 
 export interface Purchase {
   id?: number;
@@ -11,6 +12,8 @@ export interface Purchase {
   valor_total?: number;
   numero_documento?: string;
   serie_documento?: string;
+
+  compras_itens?: PurchaseItem[];
 
   pessoa?: Pessoa;
 }

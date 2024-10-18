@@ -1,3 +1,4 @@
+import { formatCpfCnpj } from "@/helpers/string_helper";
 import { Pessoa } from "@/models/Pessoa";
 
 type PessoasGridCompProps = {
@@ -19,7 +20,7 @@ export default function PeopleGridComp({ rows }: PessoasGridCompProps) {
               className="flex w-full flex-col"
             >
               <span className="font-bold">{row.razao_social}</span>
-              <span className="text-small">{row.cpf_cnpj}</span>
+              <span className="text-small">{formatCpfCnpj(row.cpf_cnpj)}</span>
             </a>
           </li>
         ))}

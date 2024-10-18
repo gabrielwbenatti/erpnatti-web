@@ -24,13 +24,13 @@ export default function ProductsFormComp({
   };
 
   return (
-    <form className="md:space-y-3">
-      <span className="md:col-span-4 md:mt-3 md:text-small">Cadastral</span>
-      <div className="md:grid md:grid-cols-4 md:gap-3">
+    <form className="space-y-3">
+      <span className="text-small md:col-span-4 md:mt-3">Cadastral</span>
+      <div className="grid gap-3 md:grid-cols-4">
         <Input
           label="Referência"
           name="referencia"
-          value={product.referencia}
+          value={product.referencia || ""}
           onChange={handleInputChange}
           autoComplete="off"
           className="md:col-span-1"
@@ -39,7 +39,7 @@ export default function ProductsFormComp({
           label="Nome"
           required
           name="nome"
-          value={product.nome}
+          value={product.nome || ""}
           onChange={handleInputChange}
           autoComplete="off"
           className="md:col-span-3"
@@ -55,7 +55,7 @@ export default function ProductsFormComp({
 
       <div className="flex space-x-3">
         <Checkbox
-          isSelected={product.status}
+          isSelected={product.status || true}
           onValueChange={(isSelected) =>
             setProduct((prev) => ({ ...prev, status: isSelected }))
           }
@@ -63,7 +63,7 @@ export default function ProductsFormComp({
           Status
         </Checkbox>
         <Checkbox
-          isSelected={product.movimenta_estoque}
+          isSelected={product.movimenta_estoque || true}
           onValueChange={(isSelected) =>
             setProduct((prev) => ({ ...prev, movimenta_estoque: isSelected }))
           }

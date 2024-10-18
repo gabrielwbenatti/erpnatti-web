@@ -15,7 +15,7 @@ export default function HomeNavComponent({ menus }: HomeNavComponentProps) {
   };
 
   return (
-    <Navbar className="bg-light-surface-container-high">
+    <Navbar as="nav" className="bg-light-surface-container-high">
       <NavbarContent>
         {menus.map((menu) => (
           <NavbarItem

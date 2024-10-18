@@ -70,7 +70,7 @@ export default function PeopleFormComp({
           label="Razão Social"
           required
           name="razao_social"
-          value={person.razao_social}
+          value={person.razao_social || ""}
           onChange={handleInputChange}
           autoComplete="off"
           className="md:col-span-2"
@@ -87,7 +87,7 @@ export default function PeopleFormComp({
           label="CPF/CNPJ"
           required
           name="cpf_cnpj"
-          value={person.cpf_cnpj}
+          value={person.cpf_cnpj || ""}
           onChange={handleInputChange}
           autoComplete="off"
           className="md:col-span-1"

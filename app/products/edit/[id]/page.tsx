@@ -6,6 +6,7 @@ import ProductsFormComp from "../../../../components/products/products.form";
 import * as productService from "@/services/productService";
 import { useRouter } from "next/navigation";
 import { HttpStatusCode } from "axios";
+import MainWrapperComp from "@/components/shared/main.wrapper";
 
 interface ProductsEditPageProps {
   params: { id: string };
@@ -28,7 +29,9 @@ export default function ProductsEditPage({ params }: ProductsEditPageProps) {
   }, [params.id]);
 
   const handleSubmit = async () => {
-    if (!product) return;
+    if (!product) {
+      return;
+    }
 
     await productService.update(product).then((res) => {
       if (res.status === HttpStatusCode.Ok) {
@@ -50,17 +53,17 @@ export default function ProductsEditPage({ params }: ProductsEditPageProps) {
   return (
     <div className="md:space-y-3 md:px-8 md:py-3">
       {product ? (
-        <>
-          <h1 className="text-xl font-bold">{nome}</h1>
+        <MainWrapperComp>
+          <h1 className="text-xl font-bold">Novo Cadastro</h1>
 
           <ProductsFormComp
             initialData={product}
             onChangeData={setProduct}
             onSubmit={handleSubmit}
-            onCancel={handleCancel}
             onDelete={handleDelete}
+            onCancel={handleCancel}
           />
-        </>
+        </MainWrapperComp>
       ) : (
         <h1 className="text-xl font-bold">Carregando...</h1>
       )}

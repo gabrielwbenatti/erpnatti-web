@@ -13,10 +13,19 @@ export default function HomePage() {
     { id: 9, caption: "Títulos a Pagar" },
     { id: 10, caption: "Acompanhamento Geral" },
   ];
+  const menus = [
+    { id: 1, caption: "Início", route: "/" },
+    { id: 2, caption: "Financeiro" },
+    { id: 3, caption: "Vendas" },
+    { id: 4, caption: "Produção" },
+    { id: 5, caption: "Gerencial" },
+  ];
 
   return (
     <>
-      <div className="flex h-full">
+      <div className="h-full">
+        <HomeNavComponent menus={menus} />
+
         <main className="md:w-9/12 xl:w-10/12">
           <HomeGridComponent atalhos={atalhos} />
         </main>

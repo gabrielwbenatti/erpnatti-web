@@ -21,11 +21,11 @@ export default function ProductsPage() {
 
   return (
     <>
-      <Link href="/products/create">
-        <Button variant="solid">Novo</Button>
-      </Link>
-
       <MainWrapperComp>
+        <Link href="/products/create">
+          <Button variant="solid">Novo</Button>
+        </Link>
+
         <ul>
           {products.map((product) => (
             <li

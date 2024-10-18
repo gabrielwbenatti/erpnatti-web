@@ -2,17 +2,9 @@
 
 import { Purchase } from "@/models/Purchase";
 import { FormProps } from "@/types/FormProps";
-import * as peopleService from "@/services/peopleService";
 import { DatePicker } from "@nextui-org/date-picker";
 import { Input } from "@nextui-org/input";
 import { ChangeEvent, useEffect, useState } from "react";
-import {
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalHeader,
-  useDisclosure,
-} from "@nextui-org/modal";
 import PurchasesItemsFormComp from "./purchases.items.form";
 
 export default function PurchasesFormComp({
@@ -20,19 +12,11 @@ export default function PurchasesFormComp({
   onChangeData,
 }: FormProps<Purchase>) {
   const [purchase, setPurchase] = useState<Purchase>(initialData);
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setPurchase((prev) => ({ ...prev, [name]: value }));
   };
-
-  useEffect(() => {
-    async function fetchData() {
-      const res = await peopleService.index();
-    }
-    fetchData();
-  });
 
   useEffect(() => {
     onChangeData(purchase);
@@ -41,7 +25,10 @@ export default function PurchasesFormComp({
   return (
     <form className="md:space-y-3">
       <div className="md:grid md:grid-cols-4 md:gap-3">
-        <span className="md:col-span-4 md:mt-3 md:text-small">Emitente</span>
+        <span className="block md:col-span-4 md:mt-3 md:text-small">
+          Emitente
+        </span>
+
         <Input
           value={purchase.numero_documento || ""}
           label="Número do Documento"
@@ -74,31 +61,13 @@ export default function PurchasesFormComp({
             setPurchase((prev) => ({ ...prev, data_entrada: value }))
           }
         />
-        <Input
-          label="Fornecedor"
-          name="pessoa"
-          className="md:col-span-4"
-          onClick={onOpen}
-        />
+        <Input label="Fornecedor" name="pessoa" className="md:col-span-4" />
       </div>
 
-      <PurchasesItemsFormComp />
-
-      <Modal
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
-        scrollBehavior="inside"
-      >
-        <ModalContent>
-          <ModalHeader>Selecione o Fornecedor</ModalHeader>
-          <ModalBody>
-            <Input
-              label="Busque por Razão Social, Nome Fantasia ou CNPJ"
-              size="sm"
-            />
-          </ModalBody>
-        </ModalContent>
-      </Modal>
+      <PurchasesItemsFormComp
+        initialData={purchase.compras_itens!}
+        onChangeData={() => {}}
+      />
     </form>
   );
 }
