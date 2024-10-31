@@ -13,7 +13,7 @@ export default function PeopleGridComp({ rows }: PessoasGridCompProps) {
         {rows.map((row) => (
           <li
             key={row.id}
-            className="flex hover:bg-light-on-surface hover:bg-opacity-[.08] md:rounded-lg md:p-2"
+            className="hover:bg-light-onSurface flex hover:bg-opacity-[.08] md:rounded-lg md:p-2"
           >
             <a
               href={`/pessoas/edit/${row.id}`}

@@ -1,4 +1,4 @@
-import { Product } from "@/models/Product";
+import ProductDTO from "@/dtos/ProductDTO";
 import { FormProps } from "@/types/FormProps";
 import { Button } from "@nextui-org/button";
 import { Checkbox } from "@nextui-org/checkbox";
@@ -11,14 +11,14 @@ export default function ProductsFormComp({
   onSubmit,
   onCancel,
   onDelete,
-}: FormProps<Product>) {
-  const [product, setProduct] = useState<Product>(initialData);
+}: FormProps<ProductDTO>) {
+  const [product, setProduct] = useState<ProductDTO>(initialData);
 
   useEffect(() => {
     onChangeData(product);
   }, [product]);
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setProduct((prev) => ({ ...prev, [name]: value }));
   };
@@ -29,26 +29,26 @@ export default function ProductsFormComp({
       <div className="grid gap-3 md:grid-cols-4">
         <Input
           label="Referência"
-          name="referencia"
-          value={product.referencia || ""}
-          onChange={handleInputChange}
+          name="reference"
+          value={product.reference || ""}
+          onChange={handleChange}
           autoComplete="off"
           className="md:col-span-1"
         />
         <Input
           label="Nome"
           required
-          name="nome"
-          value={product.nome || ""}
-          onChange={handleInputChange}
+          name="name"
+          value={product.name || ""}
+          onChange={handleChange}
           autoComplete="off"
           className="md:col-span-3"
         />
         <Input
           label="Código de Barras"
-          name="codigo_barra"
-          value={product.codigo_barra || ""}
-          onChange={handleInputChange}
+          name="barcode"
+          value={product.barcode || ""}
+          onChange={handleChange}
           autoComplete="off"
         />
       </div>
@@ -63,9 +63,9 @@ export default function ProductsFormComp({
           Status
         </Checkbox>
         <Checkbox
-          isSelected={product.movimenta_estoque || true}
+          isSelected={product.move_stock || true}
           onValueChange={(isSelected) =>
-            setProduct((prev) => ({ ...prev, movimenta_estoque: isSelected }))
+            setProduct((prev) => ({ ...prev, move_stock: isSelected }))
           }
         >
           Movimenta Estoque

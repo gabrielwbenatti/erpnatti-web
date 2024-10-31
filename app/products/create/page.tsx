@@ -3,39 +3,49 @@
 import ProductsFormComp from "@/components/products/products.form";
 import MainWrapperComp from "@/components/shared/main.wrapper";
 import * as productService from "@/services/productService";
-import { Product } from "@/models/Product";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { HttpStatusCode } from "axios";
+import { HttpStatusCode, isAxiosError } from "axios";
+import ProductDTO from "@/dtos/ProductDTO";
+import { toast, Toaster } from "sonner";
 
 export default function ProductsCreatePage() {
   const router = useRouter();
 
-  const [product, setProduct] = useState<Product>({
-    movimenta_estoque: true,
-    status: true,
+  const [product, setProduct] = useState<ProductDTO>({
+    name: "",
   });
 
   const handleSubmit = async () => {
-    await productService.store(product).then((res) => {
-      if (res.status === HttpStatusCode.Created) {
-        router.push("/products");
-      }
-    });
+    await productService
+      .store(product)
+      .then((res) => {
+        if (res.status === HttpStatusCode.Created) {
+          router.push("/products");
+        }
+      })
+      .catch((error) => {
+        if (isAxiosError(error)) {
+          toast.error(error.response?.data.message);
+        }
+      });
   };
 
   const handleCancel = () => router.push("/products");
 
   return (
-    <MainWrapperComp>
-      <h1 className="text-xl font-bold">Novo Cadastro</h1>
+    <>
+      <Toaster position="top-right" richColors />
+      <MainWrapperComp>
+        <h1 className="text-xl font-bold">Novo Cadastro</h1>
 
-      <ProductsFormComp
-        initialData={product}
-        onChangeData={setProduct}
-        onSubmit={handleSubmit}
-        onCancel={handleCancel}
-      />
-    </MainWrapperComp>
+        <ProductsFormComp
+          initialData={product}
+          onChangeData={setProduct}
+          onSubmit={handleSubmit}
+          onCancel={handleCancel}
+        />
+      </MainWrapperComp>
+    </>
   );
 }

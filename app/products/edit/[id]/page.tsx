@@ -1,27 +1,27 @@
 "use client";
 
-import { Product } from "@/models/Product";
 import { useEffect, useState } from "react";
 import ProductsFormComp from "../../../../components/products/products.form";
 import * as productService from "@/services/productService";
 import { useRouter } from "next/navigation";
 import { HttpStatusCode } from "axios";
 import MainWrapperComp from "@/components/shared/main.wrapper";
+import ProductDTO from "@/dtos/ProductDTO";
 
 interface ProductsEditPageProps {
   params: { id: string };
 }
 
 export default function ProductsEditPage({ params }: ProductsEditPageProps) {
-  const [product, setProduct] = useState<Product | null>(null);
-  const [nome, setNome] = useState<string>("");
+  const [product, setProduct] = useState<ProductDTO | null>(null);
+  const [name, setName] = useState<string>("");
   const router = useRouter();
 
   useEffect(() => {
     async function fetchData() {
       await productService.show(+params.id).then((res) => {
         setProduct(res.data.result);
-        setNome(res.data.result.nome || "<undefined>");
+        setName(res.data.result.name || "<undefined>");
       });
     }
 
@@ -54,7 +54,7 @@ export default function ProductsEditPage({ params }: ProductsEditPageProps) {
     <div className="md:space-y-3 md:px-8 md:py-3">
       {product ? (
         <MainWrapperComp>
-          <h1 className="text-xl font-bold">Novo Cadastro</h1>
+          <h1 className="text-xl font-bold">{name}</h1>
 
           <ProductsFormComp
             initialData={product}

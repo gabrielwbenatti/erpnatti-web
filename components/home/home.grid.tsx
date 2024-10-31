@@ -6,9 +6,9 @@ type HomeGridComponentProp = {
 
 const HomeGridItem = ({ item }: { item: HomeGridComponentProp }) => (
   <a href={item.route ? item.route : "#"}>
-    <div className="box-border rounded-lg border-2 border-transparent hover:border-2 hover:border-light-on-primary-container">
-      <div className="flex h-48 select-none flex-col items-center justify-center gap-6 rounded-lg bg-light-surface-container p-4 text-center">
-        <span className="font-semibold uppercase text-light-on-primary-container">
+    <div className="box-border rounded-lg border-2 border-transparent hover:border-2 hover:border-light-onPrimaryContainer">
+      <div className="flex h-48 select-none flex-col items-center justify-center gap-6 rounded-lg bg-light-surfaceContainer p-4 text-center">
+        <span className="font-semibold uppercase text-light-onPrimaryContainer">
           {item.caption}
         </span>
       </div>

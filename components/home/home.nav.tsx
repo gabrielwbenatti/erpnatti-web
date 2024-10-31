@@ -15,12 +15,12 @@ export default function HomeNavComponent({ menus }: HomeNavComponentProps) {
   };
 
   return (
-    <Navbar as="nav" className="bg-light-surface-container-high">
+    <Navbar as="nav" className="bg-light-surfaceContainerHigh">
       <NavbarContent>
         {menus.map((menu) => (
           <NavbarItem
             key={menu.id}
-            className="rounded-full px-3 py-1 hover:bg-light-on-surface hover:bg-opacity-[.08]"
+            className="hover:bg-light-onSurface rounded-full px-3 py-1 hover:bg-opacity-[.08]"
           >
             <a href="#" onClick={() => handleClick(menu.route)}>
               {menu.caption}
