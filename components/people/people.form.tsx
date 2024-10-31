@@ -1,6 +1,6 @@
 "use client";
 
-import { Pessoa } from "@/models/Pessoa";
+import PersonDTO from "@/dtos/PersonDTO";
 import { viaCepApi } from "@/services/api";
 import { FormProps } from "@/types/FormProps";
 import { Button } from "@nextui-org/button";
@@ -8,7 +8,6 @@ import { Input } from "@nextui-org/input";
 import { Select, SelectItem } from "@nextui-org/select";
 import { SharedSelection } from "@nextui-org/system";
 import { HttpStatusCode } from "axios";
-import { Search } from "lucide-react";
 import { ChangeEvent, useEffect, useState } from "react";
 
 const TYPES_LIST: { key: string; label: string }[] = [
@@ -24,8 +23,8 @@ export default function PeopleFormComp({
   onCancel,
   onDelete,
   onSubmit,
-}: FormProps<Pessoa>) {
-  const [person, setPerson] = useState<Pessoa>(initialData);
+}: FormProps<PersonDTO>) {
+  const [person, setPerson] = useState<PersonDTO>(initialData);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -69,16 +68,16 @@ export default function PeopleFormComp({
         <Input
           label="Razão Social"
           required
-          name="razao_social"
-          value={person.razao_social || ""}
+          name="company_name"
+          value={person.company_name || ""}
           onChange={handleInputChange}
           autoComplete="off"
           className="md:col-span-2"
         />
         <Input
           label="Nome Fantasia"
-          name="nome_fantasia"
-          value={person.nome_fantasia || ""}
+          name="trading_name"
+          value={person.trading_name || ""}
           onChange={handleInputChange}
           autoComplete="off"
           className="md:col-span-2"
@@ -97,7 +96,7 @@ export default function PeopleFormComp({
           label="Tipo de Pessoa"
           selectionMode="multiple"
           items={TYPES_LIST}
-          selectedKeys={new Set(person.tipo_pessoa)}
+          selectedKeys={new Set(person.contact_type)}
           onSelectionChange={handleSelectChange}
           className="md:col-span-3"
         >
@@ -112,26 +111,26 @@ export default function PeopleFormComp({
         <div className="flex items-center gap-2">
           <Input
             label="CEP"
-            name="cep"
-            value={person.cep || ""}
+            name="zip_code"
+            value={person.zip_code || ""}
             onChange={handleInputChange}
             autoComplete="off"
           />
-          <Button onClick={() => fetchCep(person.cep!)}>Buscar</Button>
+          <Button onClick={() => fetchCep(person.zip_code!)}>Buscar</Button>
         </div>
         <Input
           isDisabled
           label="Endereço"
-          name="endereco"
-          value={person.endereco || ""}
+          name="address"
+          value={person.address || ""}
           onChange={handleInputChange}
           autoComplete="off"
           className="md:col-span-2"
         />
         <Input
           label="Número"
-          name="numero"
-          value={person.numero || ""}
+          name="number"
+          value={person.number || ""}
           onChange={handleInputChange}
           autoComplete="off"
           className="md:col-span-1"
@@ -140,8 +139,8 @@ export default function PeopleFormComp({
         <Input
           isDisabled
           label="Bairro"
-          name="bairro"
-          value={person.bairro || ""}
+          name="neighbourhood"
+          value={person.neighbourhood || ""}
           onChange={handleInputChange}
           autoComplete="off"
           className="col-span-1"
@@ -149,16 +148,16 @@ export default function PeopleFormComp({
         <Input
           isDisabled
           label="Cidade"
-          name="cidade"
-          value={person.cidade || ""}
+          name="city"
+          value={person.city || ""}
           onChange={handleInputChange}
           autoComplete="off"
           className="col-span-1"
         />
         <Input
           label="Complemento"
-          name="complemento"
-          value={person.complemento || ""}
+          name="complement"
+          value={person.complement || ""}
           onChange={handleInputChange}
           autoComplete="off"
           className="col-span-2"

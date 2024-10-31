@@ -3,6 +3,7 @@ import { FormProps } from "@/types/FormProps";
 import { Button } from "@nextui-org/button";
 import { Checkbox } from "@nextui-org/checkbox";
 import { Input } from "@nextui-org/input";
+import Link from "next/link";
 import { ChangeEvent, useEffect, useState } from "react";
 
 export default function ProductsFormComp({
@@ -55,7 +56,7 @@ export default function ProductsFormComp({
 
       <div className="flex space-x-3">
         <Checkbox
-          isSelected={product.status || true}
+          isSelected={product.status}
           onValueChange={(isSelected) =>
             setProduct((prev) => ({ ...prev, status: isSelected }))
           }
@@ -63,7 +64,7 @@ export default function ProductsFormComp({
           Status
         </Checkbox>
         <Checkbox
-          isSelected={product.move_stock || true}
+          isSelected={product.move_stock}
           onValueChange={(isSelected) =>
             setProduct((prev) => ({ ...prev, move_stock: isSelected }))
           }

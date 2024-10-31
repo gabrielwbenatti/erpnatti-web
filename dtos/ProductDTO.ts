@@ -3,8 +3,8 @@ interface ProductDTO {
   name: string;
   barcode?: string;
   reference?: string;
-  move_stock?: boolean;
-  status?: boolean;
+  move_stock: boolean;
+  status: boolean;
   minimum_stock?: number;
   maximum_stock?: number;
   current_stock?: number;

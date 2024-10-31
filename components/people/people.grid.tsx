@@ -1,9 +1,10 @@
+import PersonDTO from "@/dtos/PersonDTO";
 import { formatCpfCnpj } from "@/helpers/string_helper";
-import { Pessoa } from "@/models/Pessoa";
+import Link from "next/link";
 
 type PessoasGridCompProps = {
   columns?: { key: string; label: string }[];
-  rows: Pessoa[];
+  rows: PersonDTO[];
 };
 
 export default function PeopleGridComp({ rows }: PessoasGridCompProps) {
@@ -13,15 +14,15 @@ export default function PeopleGridComp({ rows }: PessoasGridCompProps) {
         {rows.map((row) => (
           <li
             key={row.id}
-            className="hover:bg-light-onSurface flex hover:bg-opacity-[.08] md:rounded-lg md:p-2"
+            className="flex hover:bg-light-onSurface hover:bg-opacity-[.08] md:rounded-lg md:p-2"
           >
-            <a
+            <Link
               href={`/pessoas/edit/${row.id}`}
               className="flex w-full flex-col"
             >
-              <span className="font-bold">{row.razao_social}</span>
+              <span className="font-bold">{row.company_name}</span>
               <span className="text-small">{formatCpfCnpj(row.cpf_cnpj)}</span>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

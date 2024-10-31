@@ -14,6 +14,8 @@ export default function ProductsCreatePage() {
 
   const [product, setProduct] = useState<ProductDTO>({
     name: "",
+    move_stock: true,
+    status: true,
   });
 
   const handleSubmit = async () => {

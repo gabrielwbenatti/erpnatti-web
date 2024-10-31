@@ -1,11 +1,11 @@
 "use client";
 
-import { Pessoa } from "@/models/Pessoa";
 import React, { useEffect, useState } from "react";
 import * as peopleServices from "@/services/peopleService";
 import PeopleFormComp from "../../../../components/people/people.form";
 import { useRouter } from "next/navigation";
 import { HttpStatusCode } from "axios";
+import PersonDTO from "@/dtos/PersonDTO";
 
 export default function PessoasEditPage({
   params,
@@ -14,21 +14,21 @@ export default function PessoasEditPage({
 }) {
   const router = useRouter();
 
-  const [person, setPerson] = useState<Pessoa | null>(null);
+  const [person, setPerson] = useState<PersonDTO | null>(null);
   const [razaoSocial, setRazaoSocial] = useState<string>("");
 
   useEffect(() => {
     async function fetchData() {
       await peopleServices.show(+params.id).then((res) => {
         setPerson(res.data.result);
-        setRazaoSocial(res.data.result.razao_social || "<undefined>");
+        setRazaoSocial(res.data.result.company_name);
       });
     }
 
     fetchData();
   }, [params.id]);
 
-  const handlePersonChange = (pessoa: Pessoa) => setPerson(pessoa);
+  const handlePersonChange = (person: PersonDTO) => setPerson(person);
 
   const handleSubmit = async () => {
     if (!person) return;
