@@ -33,14 +33,15 @@ export default function PessoasEditPage({
   const handleSubmit = async () => {
     if (!person) return;
 
+    console.log(person);
     await peopleServices.update(person).then((res) => {
       if (res.status === HttpStatusCode.Ok) {
-        router.push("/pessoas");
+        router.push("/people");
       }
     });
   };
 
-  const handleCancel = () => router.push("/pessoas");
+  const handleCancel = () => router.push("/people");
 
   if (!person) {
     return;

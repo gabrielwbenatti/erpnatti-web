@@ -2,7 +2,7 @@
 
 import PeopleFormComp from "@/components/people/people.form";
 import MainWrapperComp from "@/components/shared/main.wrapper";
-import { Pessoa } from "@/models/Pessoa";
+import PersonDTO from "@/dtos/PersonDTO";
 import * as peopleService from "@/services/peopleService";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -10,19 +10,23 @@ import { useState } from "react";
 export default function PessoasNovoPage() {
   const router = useRouter();
 
-  const [person, setPerson] = useState<Pessoa>({});
+  const [person, setPerson] = useState<PersonDTO>({
+    company_name: "",
+    status: true,
+    contact_type: [],
+  });
 
-  const handleChangeData = (person: Pessoa) => setPerson(person);
+  const handleChangeData = (person: PersonDTO) => setPerson(person);
 
   const handleSubmit = async () => {
     await peopleService.store(person).then((res) => {
       if (res.status === 201) {
-        router.push("/pessoas");
+        router.push("/people");
       }
     });
   };
 
-  const handleCancel = () => router.push("/pessoas");
+  const handleCancel = () => router.push("/people");
 
   return (
     <MainWrapperComp>

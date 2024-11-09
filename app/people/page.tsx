@@ -1,11 +1,12 @@
 "use client";
 
-import PeopleHeaderComp from "../../components/people/people.nav";
 import PeopleGridComp from "../../components/people/people.grid";
 import * as peopleServices from "@/services/peopleService";
 import { useEffect, useState } from "react";
 import MainWrapperComp from "@/components/shared/main.wrapper";
 import PersonDTO from "@/dtos/PersonDTO";
+import { Button } from "@nextui-org/button";
+import Link from "next/link";
 
 export default function PessoasPage() {
   const [people, setPeople] = useState<PersonDTO[]>([]);
@@ -20,14 +21,12 @@ export default function PessoasPage() {
   }, []);
 
   return (
-    <>
-      <header>
-        <PeopleHeaderComp />
-      </header>
+    <MainWrapperComp>
+      <Link href="/people/create">
+        <Button variant="solid">Novo</Button>
+      </Link>
 
-      <MainWrapperComp>
-        <PeopleGridComp rows={people} />
-      </MainWrapperComp>
-    </>
+      <PeopleGridComp rows={people} />
+    </MainWrapperComp>
   );
 }

@@ -3,7 +3,7 @@ interface PersonDTO {
   company_name: string;
   trading_name?: string;
   cpf_cnpj?: string;
-  contact_type?: string[];
+  contact_type: Iterable<string>;
   status: boolean;
 
   zip_code?: string;
