@@ -39,7 +39,7 @@ export default function ProductsCreatePage() {
     <>
       <Toaster position="top-right" richColors />
       <MainWrapperComp>
-        <h1 className="text-xl font-bold">Novo Cadastro</h1>
+        <h1 className="pt-8 text-xl font-bold">Novo Cadastro</h1>
 
         <ProductsFormComp
           initialData={product}

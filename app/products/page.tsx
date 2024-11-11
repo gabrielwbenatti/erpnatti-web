@@ -1,9 +1,11 @@
 "use client";
 
 import MainWrapperComp from "@/components/shared/main.wrapper";
+import Table from "@/components/shared/Table";
 import ProductDTO from "@/dtos/ProductDTO";
 import * as productService from "@/services/productService";
 import { Button } from "@nextui-org/button";
+import { Ellipsis } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -19,32 +21,42 @@ export default function ProductsPage() {
     fetchData();
   }, []);
 
-  return (
-    <>
-      <MainWrapperComp>
-        <Link href="/products/create">
-          <Button variant="solid">Novo</Button>
-        </Link>
+  const renderRow = (product: ProductDTO) => {
+    return (
+      <tr>
+        <td>
+          <div className="flex flex-col">
+            <span>{product.name}</span>
+            <span className="text-small italic">{product.reference}</span>
+          </div>
+        </td>
+        <td>
+          <Button isIconOnly variant="light">
+            <Ellipsis />
+          </Button>
+        </td>
+      </tr>
+    );
+  };
 
-        <ul>
-          {products.map((product) => (
-            <li
-              key={product.id}
-              className="flex hover:bg-light-onSurface hover:bg-opacity-[.08] md:rounded-lg md:p-2"
-            >
-              <Link
-                className="flex w-full flex-col"
-                href={`/products/edit/${product.id}`}
-              >
-                <span className="font-bold">{product.name}</span>
-                {product.reference && (
-                  <span className="text-small">{product.reference}</span>
-                )}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </MainWrapperComp>
-    </>
+  return (
+    <MainWrapperComp>
+      <div className="flex items-center justify-between pt-8">
+        <h1 className="text-xl font-bold">Produtos</h1>
+
+        <Link href="/products/create">
+          <Button variant="solid">Novo Produto</Button>
+        </Link>
+      </div>
+
+      <Table
+        data={products}
+        renderRow={renderRow}
+        columns={[
+          { header: "Nome", accessor: "name" },
+          { header: "Ações", accessor: "actions" },
+        ]}
+      />
+    </MainWrapperComp>
   );
 }

@@ -51,10 +51,12 @@ export default function ProductsEditPage({ params }: ProductsEditPageProps) {
   };
 
   return (
-    <div className="md:space-y-3 md:px-8 md:py-3">
+    <div className="md:space-y-3 md:py-3">
       {product ? (
         <MainWrapperComp>
-          <h1 className="text-xl font-bold">{name}</h1>
+          <div className="flex items-center justify-between pt-8">
+            <h1 className="text-xl font-bold">{name}</h1>
+          </div>
 
           <ProductsFormComp
             initialData={product}
