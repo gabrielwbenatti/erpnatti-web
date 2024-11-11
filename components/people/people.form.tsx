@@ -32,11 +32,8 @@ export default function PeopleFormComp({
   };
 
   const handleSelectChange = (keys: SharedSelection) => {
-    const selectedValues = Array.isArray(keys)
-      ? keys
-      : Array.from(keys as Set<string>);
-
-    setPerson((prev) => ({ ...prev, tipo_pessoa: selectedValues }));
+    const selectedValues = Array.isArray(keys) ? keys : Array.from(keys);
+    setPerson((prev) => ({ ...prev, contact_type: new Set(selectedValues) }));
   };
 
   const fetchCep = (cep: string) => {
@@ -46,14 +43,15 @@ export default function PeopleFormComp({
         if (res.status === HttpStatusCode.Ok) {
           setPerson((prev) => ({
             ...prev,
-            endereco: body.logradouro,
-            bairro: body.bairro,
-            cidade: body.localidade,
-            codigo_ibge: body.ibge,
+            address: body.logradouro,
+            neighbourhood: body.bairro,
+            city: body.localidade,
+            ibge_code: body.ibge,
           }));
         }
       });
     }
+
     fetchData();
   };
 
@@ -100,9 +98,9 @@ export default function PeopleFormComp({
           onSelectionChange={handleSelectChange}
           className="md:col-span-3"
         >
-          {(items) => (
-            <SelectItem key={items.key} value={items.key}>
-              {items.label}
+          {(item) => (
+            <SelectItem key={item.key} value={item.key}>
+              {item.label}
             </SelectItem>
           )}
         </Select>

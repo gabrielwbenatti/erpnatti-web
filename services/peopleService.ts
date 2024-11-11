@@ -20,8 +20,8 @@ const show = async (id: number) => {
 
 const update = async (person: PersonDTO) => {
   const { id } = person;
-  const body = JSON.stringify(person);
-  const response = await api.put<PersonDTO>(`/people/${id}`, body);
+  console.log(person);
+  const response = await api.put<PersonDTO>(`/people/${id}`, person);
   return response;
 };
 

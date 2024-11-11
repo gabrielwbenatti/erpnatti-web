@@ -1,6 +1,5 @@
 "use client";
 
-import PeopleGridComp from "../../components/people/people.grid";
 import * as peopleServices from "@/services/peopleService";
 import { useEffect, useState } from "react";
 import MainWrapperComp from "@/components/shared/main.wrapper";
