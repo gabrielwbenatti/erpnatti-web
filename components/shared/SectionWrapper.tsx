@@ -2,14 +2,19 @@ import React from "react";
 
 interface SectionWrapper {
   title: string;
+  className?: string;
   children: React.ReactNode;
 }
 
-export default function SectionWrapper({ title, children }: SectionWrapper) {
+export default function SectionWrapper({
+  title,
+  className,
+  children,
+}: SectionWrapper) {
   return (
-    <>
-      <span className="mb-1 text-small md:col-span-4">{title}</span>
+    <section className={`mt-3 ${className}`}>
+      <span className="mb-1 block text-small md:col-span-4">{title}</span>
       {children}
-    </>
+    </section>
   );
 }

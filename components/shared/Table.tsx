@@ -1,7 +1,13 @@
 import React from "react";
 
+export interface TableColumnProps {
+  header: string;
+  accessor: string;
+  className?: string;
+}
+
 interface TableProps {
-  columns: { header: string; accessor: string; className?: string }[];
+  columns: TableColumnProps[];
   renderRow: (item: any) => React.ReactNode;
   data: any[];
 }
@@ -13,11 +19,15 @@ const Table = ({ columns, renderRow, data }: TableProps) => {
         <thead>
           <tr className="text-left">
             {columns.map((column) => (
-              <th className={column.className}>{column.header}</th>
+              <th key={column.accessor} className={column.className}>
+                {column.header}
+              </th>
             ))}
           </tr>
         </thead>
-        <tbody>{data.map((item) => renderRow(item))}</tbody>
+        <tbody className="divide-y">
+          {data.map((item) => renderRow(item))}
+        </tbody>
       </table>
     </>
   );

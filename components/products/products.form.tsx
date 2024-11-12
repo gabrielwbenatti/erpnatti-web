@@ -25,8 +25,8 @@ export default function ProductsFormComp({
   };
 
   return (
-    <form className="space-y-3">
-      <SectionWrapper title={"Cadastral"}>
+    <form className="box-border space-y-3">
+      <SectionWrapper title="Cadastral" className="space-y-3">
         <div className="grid gap-3 md:grid-cols-4">
           <Input
             label="Referência"
@@ -52,18 +52,18 @@ export default function ProductsFormComp({
             onChange={handleChange}
             autoComplete="off"
           />
+          <Checkbox
+            isSelected={product.status}
+            onValueChange={(isSelected) =>
+              setProduct((prev) => ({ ...prev, status: isSelected }))
+            }
+          >
+            Status
+          </Checkbox>
         </div>
       </SectionWrapper>
 
-      <div className="flex space-x-3">
-        <Checkbox
-          isSelected={product.status}
-          onValueChange={(isSelected) =>
-            setProduct((prev) => ({ ...prev, status: isSelected }))
-          }
-        >
-          Status
-        </Checkbox>
+      <SectionWrapper title="Controle de Estoque" className="space-y-3">
         <Checkbox
           isSelected={product.move_stock}
           onValueChange={(isSelected) =>
@@ -72,7 +72,34 @@ export default function ProductsFormComp({
         >
           Movimenta Estoque
         </Checkbox>
-      </div>
+
+        <div className="space-y-3 md:grid md:grid-cols-3 md:gap-3">
+          <Input
+            type="number"
+            name="minimum_stock"
+            onChange={handleChange}
+            value={String(product.minimum_stock)}
+            label="Estoque Mínimo"
+            isDisabled={!product.move_stock}
+          />
+          <Input
+            type="number"
+            name="maximum_stock"
+            onChange={handleChange}
+            value={String(product.maximum_stock)}
+            label="Estoque Máximo"
+            isDisabled={!product.move_stock}
+          />
+          <Input
+            type="number"
+            name="current_stock"
+            onChange={handleChange}
+            value={String(product.current_stock)}
+            label="Estoque Atual"
+            isDisabled={!product.move_stock || product.id !== undefined}
+          />
+        </div>
+      </SectionWrapper>
 
       <div className="flex">
         <Button type="button" variant="solid" onClick={onSubmit}>

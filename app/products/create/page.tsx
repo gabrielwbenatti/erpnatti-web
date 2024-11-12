@@ -14,11 +14,15 @@ export default function ProductsCreatePage() {
 
   const [product, setProduct] = useState<ProductDTO>({
     name: "",
+    current_stock: 0,
+    minimum_stock: 0,
+    maximum_stock: 0,
     move_stock: true,
     status: true,
   });
 
   const handleSubmit = async () => {
+    // console.log(product);
     await productService
       .store(product)
       .then((res) => {

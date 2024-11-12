@@ -1,13 +1,19 @@
 "use client";
 
 import MainWrapperComp from "@/components/shared/main.wrapper";
-import Table from "@/components/shared/Table";
+import Table, { TableColumnProps } from "@/components/shared/Table";
 import ProductDTO from "@/dtos/ProductDTO";
 import * as productService from "@/services/productService";
 import { Button } from "@nextui-org/button";
-import { Ellipsis } from "lucide-react";
+import { Ellipsis, Eye, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+
+const columns: TableColumnProps[] = [
+  { header: "Nome", accessor: "name" },
+  { header: "Estoque", accessor: "current_stock" },
+  { header: "Ações", accessor: "actions" },
+];
 
 export default function ProductsPage() {
   const [products, setProducts] = useState<ProductDTO[]>([]);
@@ -23,17 +29,27 @@ export default function ProductsPage() {
 
   const renderRow = (product: ProductDTO) => {
     return (
-      <tr>
+      <tr key={product.id}>
         <td>
           <div className="flex flex-col">
             <span>{product.name}</span>
             <span className="text-small italic">{product.reference}</span>
           </div>
         </td>
+
+        <td>{product.current_stock || 0}</td>
+
         <td>
-          <Button isIconOnly variant="light">
-            <Ellipsis />
-          </Button>
+          <div className="table-cell p-2">
+            <Link href={`/products/edit/${product.id}`}>
+              <Button isIconOnly variant="light">
+                <Eye />
+              </Button>
+            </Link>
+            <Button isIconOnly color="danger">
+              <Trash2 />
+            </Button>
+          </div>
         </td>
       </tr>
     );
@@ -49,14 +65,7 @@ export default function ProductsPage() {
         </Link>
       </div>
 
-      <Table
-        data={products}
-        renderRow={renderRow}
-        columns={[
-          { header: "Nome", accessor: "name" },
-          { header: "Ações", accessor: "actions" },
-        ]}
-      />
+      <Table data={products} renderRow={renderRow} columns={columns} />
     </MainWrapperComp>
   );
 }
