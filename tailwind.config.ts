@@ -1,71 +1,18 @@
-import { nextui } from "@nextui-org/theme";
 import type { Config } from "tailwindcss";
 
-const config: Config = {
+export default {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./node_modules/@nextui-org/theme/dist/components/(autocomplete|button|checkbox|date-picker|divider|input|modal|navbar|select|table|popover|ripple|spinner|listbox|scroll-shadow|calendar|date-input|spacer).js",
   ],
   theme: {
     extend: {
       colors: {
-        light: {
-          primary: "#5D5791",
-          surfaceTint: "#5D5791",
-          onPrimary: "#FFFFFF",
-          primaryContainer: "#E4DFFF",
-          onPrimaryContainer: "#191249",
-          secondary: "#5F5C71",
-          onSecondary: "#FFFFFF",
-          secondaryContainer: "#E4DFF9",
-          onSecondaryContainer: "#1B192C",
-          tertiary: "#7B5266",
-          onTertiary: "#FFFFFF",
-          tertiaryContainer: "#FFD8E8",
-          onTertiaryContainer: "#301122",
-          error: "#BA1A1A",
-          onError: "#FFFFFF",
-          errorContainer: "#FFDAD6",
-          onErrorContainer: "#410002",
-          background: "#FCF8FF",
-          onBackground: "#1C1B20",
-          surface: "#FCF8FF",
-          onSurface: "#1C1B20",
-          surfaceVariant: "#E5E1EC",
-          onSurfaceVariant: "#47464F",
-          outline: "#787680",
-          outlineVariant: "#C9C5D0",
-          shadow: "#000000",
-          scrim: "#000000",
-          inverseSurface: "#313036",
-          inverseOnSurface: "#F4EFF7",
-          inversePrimary: "#C7BFFF",
-          primaryFixed: "#E4DFFF",
-          onPrimaryFixed: "#191249",
-          primaryFixedDim: "#C7BFFF",
-          onPrimaryFixedVariant: "#454077",
-          secondaryFixed: "#E4DFF9",
-          onSecondaryFixed: "#1B192C",
-          secondaryFixedDim: "#C8C3DC",
-          onSecondaryFixedVariant: "#474459",
-          tertiaryFixed: "#FFD8E8",
-          onTertiaryFixed: "#301122",
-          tertiaryFixedDim: "#ECB8CF",
-          onTertiaryFixedVariant: "#613B4E",
-          surfaceDim: "#DDD8E0",
-          surfaceBright: "#FCF8FF",
-          surfaceContainerLowest: "#FFFFFF",
-          surfaceContainerLow: "#F6F2FA",
-          surfaceContainer: "#F1ECF4",
-          surfaceContainerHigh: "#EBE6EF",
-          surfaceContainerHighest: "#E5E1E9",
-        },
+        background: "var(--background)",
+        foreground: "var(--foreground)",
       },
     },
   },
-  plugins: [nextui()],
-};
-
-export default config;
+  plugins: [],
+} satisfies Config;

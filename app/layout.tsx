@@ -1,18 +1,15 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { NextUIProvider } from "@nextui-org/system";
-import HomeNavComponent from "@/components/home/home.nav";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
+const geistSans = Geist({
   variable: "--font-geist-sans",
-  weight: "100 900",
+  subsets: ["latin"],
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
+
+const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
-  weight: "100 900",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -26,11 +23,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-light-surfaceBright antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <NextUIProvider>{children}</NextUIProvider>
+        {children}
       </body>
     </html>
   );
