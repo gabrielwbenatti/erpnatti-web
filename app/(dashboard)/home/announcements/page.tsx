@@ -1,3 +1,7 @@
 export default function AnnouncementsPage() {
-  return <h1>AnnouncementsPage</h1>;
+  return (
+    <div className="p-4">
+      <h1>Coming soon...</h1>
+    </div>
+  );
 }

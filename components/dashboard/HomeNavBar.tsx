@@ -4,7 +4,7 @@ import { FileUser } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function HomeNavBarComponent() {
+export default function HomeNavBarDashboardComponent() {
   const userName = "Gabriel Benatti";
   const pathname = usePathname();
 
@@ -18,7 +18,7 @@ export default function HomeNavBarComponent() {
   console.log(pathname);
 
   return (
-    <div className="space-y-4 bg-red-100 px-4 pt-4">
+    <div className="space-y-4 border-b border-[#ebeaf2] bg-[#fcfcfe] px-4 pt-4">
       <div className="flex items-center gap-3">
         <div className="flex h-14 w-14 items-center justify-center rounded-lg border">
           <FileUser className="h-10 w-10" />

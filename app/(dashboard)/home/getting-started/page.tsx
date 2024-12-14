@@ -1,3 +1,7 @@
 export default function GettingStartedPage() {
-  return <h1>GettingStartedPage</h1>;
+  return (
+    <div className="p-4">
+      <h1>Coming soon...</h1>
+    </div>
+  );
 }

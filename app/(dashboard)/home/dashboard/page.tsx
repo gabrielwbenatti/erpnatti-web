@@ -1,3 +1,9 @@
+import SalesOverviewDashboardComponent from "@/components/dashboard/SalesOverview";
+
 export default function HomeDashboardPage() {
-  return <h1>HomeDashboardPage</h1>;
+  return (
+    <div>
+      <SalesOverviewDashboardComponent />
+    </div>
+  );
 }

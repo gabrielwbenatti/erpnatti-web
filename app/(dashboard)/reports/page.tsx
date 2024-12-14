@@ -1,3 +1,7 @@
 export default function ReportsPage() {
-  return <h1>ReportsPage</h1>;
+  return (
+    <div className="p-4">
+      <h1>ReportsPage</h1>
+    </div>
+  );
 }

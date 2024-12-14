@@ -1,4 +1,4 @@
-import HomeNavBarComponent from "@/components/dashboard/HomeNavBar";
+import HomeNavBarDashboardComponent from "@/components/dashboard/HomeNavBar";
 import React from "react";
 
 export default function HomeLayout({
@@ -6,7 +6,7 @@ export default function HomeLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <>
-      <HomeNavBarComponent />
+      <HomeNavBarDashboardComponent />
 
       <div>{children}</div>
     </>
