@@ -1,14 +1,32 @@
 import {
   BarChart3,
-  ChartColumnIncreasing,
   ChevronLeft,
   Home,
   ShoppingBag,
   ShoppingCart,
 } from "lucide-react";
+
 import Link from "next/link";
+import SidebarDropdownLinkComponent from "./SidebarDropdownLink";
+
+type MenuItem = { title: string; href: string };
 
 export default function SidebarDashboardComponent() {
+  const inventoryLinks: MenuItem[] = [
+    { title: "Items", href: "/inventory/items" },
+    { title: "Items Groups", href: "/inventory/items-groups" },
+    {
+      title: "Inventory Adjustments",
+      href: "/inventory/inventory-adjustments",
+    },
+  ];
+  const purchaseLinks: MenuItem[] = [
+    { title: "Vendors", href: "#" },
+    { title: "Purchase Orders", href: "#" },
+    { title: "Purchase Receives", href: "#" },
+    { title: "Bills", href: "#" },
+  ];
+
   return (
     <div className="flex min-h-screen w-52 flex-col gap-3 bg-[#21263c] text-[#fff]">
       {/* title */}
@@ -18,6 +36,7 @@ export default function SidebarDashboardComponent() {
       </Link>
 
       {/* items */}
+
       <Link
         href="/home/dashboard"
         className="mx-2 flex items-center gap-4 space-x-2 rounded-lg bg-[#408dfb] p-2"
@@ -25,14 +44,18 @@ export default function SidebarDashboardComponent() {
         <Home className="h-4 w-4" />
         <span>Home</span>
       </Link>
-      <button className="mx-2 flex items-center gap-4 space-x-2 p-2">
-        <ShoppingCart className="h-4 w-4" />
-        <span>Inventory</span>
-      </button>
-      <button className="mx-2 flex items-center gap-4 space-x-2 p-2">
-        <ShoppingBag className="h-4 w-4" />
-        <span>Purchases</span>
-      </button>
+
+      <SidebarDropdownLinkComponent
+        icon={<ShoppingCart className="h-4 w-4" />}
+        title="Inventory"
+        links={inventoryLinks}
+      />
+      <SidebarDropdownLinkComponent
+        icon={<ShoppingBag className="h-4 w-4" />}
+        title="Purchases"
+        links={purchaseLinks}
+      />
+
       <Link
         href="/reports"
         className="mx-2 flex items-center gap-4 space-x-2 p-2"
