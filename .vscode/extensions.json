@@ -1,8 +1,3 @@
 {
-  "recommendations": [
-    "Vue.volar",
-    "tal7aouy.icons",
-    "miguelsolorio.fluent-icons",
-    "esbenp.prettier-vscode"
-  ]
+  "recommendations": ["bradlc.vscode-tailwindcss"]
 }
