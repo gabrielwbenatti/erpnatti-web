@@ -1,5 +1,8 @@
+"use client";
+
 import NattiButton from "@/components/shared/NattiButton";
-import Link from "next/link";
+import DataTable from "./data-table";
+import { columns } from "./columns";
 
 function ProductsPage() {
   return (
@@ -14,7 +17,8 @@ function ProductsPage() {
           />
         </div>
       </div>
-      <div>fheufuehfueu</div>
+
+      <DataTable columns={columns} data={[]} />
     </div>
   );
 }
