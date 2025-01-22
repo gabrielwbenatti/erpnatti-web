@@ -1,4 +1,4 @@
-import SidebarDashboardComponent from "@/components/dashboard/Sidebar";
+import Sidebar from "@/components/sidebar/Sidebar";
 import React from "react";
 
 export default function DashboardLayout({
@@ -9,7 +9,7 @@ export default function DashboardLayout({
   return (
     <div className="flex">
       <nav>
-        <SidebarDashboardComponent />
+        <Sidebar />
       </nav>
       <main className="w-full">{children}</main>
     </div>
