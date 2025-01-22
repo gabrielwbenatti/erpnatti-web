@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ErpNattiLogo from "../shared/erpnatti-logo";
+import NattiLogo from "../shared/NattiLogo";
 import React from "react";
 import { LogOut, Settings } from "lucide-react";
 import SidebarGroup, { MenuItem } from "./SidebarGroup";
@@ -26,7 +26,7 @@ export default function Sidebar() {
       <div className="font-lexend flex h-screen w-full flex-col justify-between p-8">
         <div className="flex flex-col gap-4">
           {/* Logotipo */}
-          <ErpNattiLogo />
+          <NattiLogo />
 
           {/* Home */}
           <SidebarItem label="home" href="/" />
