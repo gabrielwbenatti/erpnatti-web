@@ -1,5 +1,5 @@
 import Link from "next/link";
-import NattiLogo from "../shared/NattiLogo";
+import NattiLogo from "../common/NattiLogo";
 import React from "react";
 import { LogOut, Settings } from "lucide-react";
 import SidebarGroup, { MenuItem } from "./SidebarGroup";
@@ -23,7 +23,7 @@ export default function Sidebar() {
 
   return (
     <nav className="w-[20rem]">
-      <div className="font-lexend flex h-screen w-full flex-col justify-between p-8">
+      <div className="flex h-screen w-full flex-col justify-between p-8">
         <div className="flex flex-col gap-4">
           {/* Logotipo */}
           <NattiLogo />

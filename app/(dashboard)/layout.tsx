@@ -7,7 +7,7 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex">
+    <div className="flex font-lexend">
       <Sidebar />
       <main className="w-full">{children}</main>
     </div>
