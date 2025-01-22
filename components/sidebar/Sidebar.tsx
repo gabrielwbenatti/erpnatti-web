@@ -22,20 +22,22 @@ export default function Sidebar() {
   ];
 
   return (
-    <div className="font-lexend">
-      <div className="flex h-full w-52 flex-col">
-        {/* Logotipo */}
-        <ErpNattiLogo />
+    <nav className="w-[20rem]">
+      <div className="font-lexend flex h-screen w-full flex-col justify-between p-8">
+        <div className="flex flex-col gap-4">
+          {/* Logotipo */}
+          <ErpNattiLogo />
 
-        {/* Home */}
-        <SidebarItem label="home" href="/" />
+          {/* Home */}
+          <SidebarItem label="home" href="/" />
 
-        {/* Menus */}
-        <SidebarGroup items={registerLinks} title="REGISTERS" />
-        <SidebarGroup items={movementLinks} title="MOVEMENTS" />
+          {/* Menus */}
+          <SidebarGroup items={registerLinks} title="REGISTERS" />
+          <SidebarGroup items={movementLinks} title="MOVEMENTS" />
+        </div>
+
+        <SidebarGroup items={otherLinks} title="OTHERS" />
       </div>
-
-      <SidebarGroup items={otherLinks} title="OTHERS" />
-    </div>
+    </nav>
   );
 }

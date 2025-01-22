@@ -12,7 +12,7 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
   href,
   icon,
 }: SidebarItemProps) => {
-  const baseClass = "px-3 py-2 flex gap-1";
+  const baseClass = "px-3 py-2 flex gap-2";
 
   return (
     <Link
