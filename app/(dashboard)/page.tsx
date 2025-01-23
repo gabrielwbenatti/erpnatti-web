@@ -1,3 +1,5 @@
+import NattiScaffold from "@/components/common/NattiScaffold";
+
 export default function MainPage() {
-  return <div>MainPage</div>;
+  return <NattiScaffold title="main page" />;
 }
